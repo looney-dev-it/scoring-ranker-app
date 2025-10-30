@@ -4,7 +4,7 @@
     </x-slot:title>
 
     
-<div class="absolute top-4 right-4 w-96 bg-white rounded-lg shadow-lg p-4">
+<div class="top-4 right-4 w-96 bg-white rounded-lg shadow-lg p-4">
     <h2 class="text-lg font-bold mb-2">Latest News</h2>
     <!-- Tes actualités ici -->
      <div class="space-y-4 mt-8">
