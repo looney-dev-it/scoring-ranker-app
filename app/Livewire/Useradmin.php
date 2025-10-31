@@ -3,11 +3,23 @@
 namespace App\Livewire;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\Attributes\Validate;
 
 class Useradmin extends Component
 {
     public $showAddModal = false;
     public $formData = [];
+    #[Validate('required')]
+    public $name = '';
+    
+    #[Validate('required')]
+    public $email = '';
+
+    #[Validate('required')]
+    public $password = '';
+
+    #[Validate('required')]
+    public $password_confirm = '';
 
     public function openAddModal(){
         $this->showAddModal = true;
@@ -25,7 +37,8 @@ class Useradmin extends Component
 
     public function save()
     {
-        Console::info('Save from UserAdmin done');
+        // Console::Log("Hello!");
+        session()->success('Message user add ok !');
     }
 
     public function render()
