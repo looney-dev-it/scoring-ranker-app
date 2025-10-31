@@ -23,25 +23,25 @@
       </li>
     </ul>
         @auth
-            <ul>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ auth()->user()->name }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">My Page</a>
-                        @if(auth()->user()->admin)
-                            <a href="/admin" class="dropdown-item">Admin</a>
-                        @endif
-                        <a class="dropdown-item" >
-                            <form method="POST" action="{{ route('logout') }}" class="inline">
-                                @csrf
-                                <button type="submit" class="btn btn-ghost btn-sm">Logout</button>
-                            </form> 
-                        </a>
-                    </div>
-                </li>
-            </ul>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{ auth()->user()->name }}
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">My Page</a></li>
+                      @if(auth()->user()->admin)
+                          <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                      @endif
+                      <li>
+                          <form method="POST" action="{{ route('logout') }}">
+                              @csrf
+                              <button type="submit" class="dropdown-item">Logout</button>
+                          </form>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
         @else
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
