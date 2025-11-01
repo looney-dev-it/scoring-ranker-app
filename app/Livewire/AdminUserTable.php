@@ -15,6 +15,18 @@ class AdminUserTable extends Component
         $this->users = User::get(); 
     }
 
+    public function change_password($id)
+    {
+        $this->dispatch('changePasswordUser', $id);
+        $this->dispatch('openUserModal');
+    }
+    
+    public function edit($id) 
+    {
+        $this->dispatch('editUser', $id);
+        $this->dispatch('openUserModal');
+    }
+
     public function delete($id)
     {
         User::findOrFail($id)->delete();

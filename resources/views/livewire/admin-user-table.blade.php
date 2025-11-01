@@ -12,7 +12,10 @@
         <tr>
             <th scope="row">{{$item->id}}</th>
             <td>
-                <button class="btn btn-sm btn-outline-secondary" wire:click="edit({{ $item->id }})">
+                <button class="btn btn-sm btn-outline-secondary" wire:click="change_password({{$item->id}})">
+                    P
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" wire:click="edit({{$item->id}})">
                     O
                 </button>
                 <button wire:click="delete({{ $item->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Are you to delete this user ?')">

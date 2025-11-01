@@ -16,11 +16,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="newUserModalLabel">Add User</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                <h5 class="modal-title" id="newUserModalLabel">User</h5>
+                
             </div>
             <div class="modal-body">
-                <livewire:admin-user-newform />
+                <livewire:admin-user-form />
             </div>
             </div>
         </div>
@@ -36,6 +36,10 @@
     window.addEventListener('userSubmitted', () => {
         const modal = bootstrap.Modal.getInstance(document.getElementById('newUserModal'));
         if (modal) modal.hide();
+    });
+    window.addEventListener('openUserModal', () => {
+        const modal = new bootstrap.Modal(document.getElementById('newUserModal'));
+        modal.show();
     });
 </script>
 </x-layout>
