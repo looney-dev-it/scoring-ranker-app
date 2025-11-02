@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->string('message', 255);
+            $table->string('title');
+            $table->text('content');
+            $table->timestamp('published_at')->nullable();
+            $table->boolean('is_published');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\Register;
@@ -9,7 +10,7 @@ use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Login;
 
 
-Route::get('/', [NewsController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/admin', [AdminController::class, 'index']);
 

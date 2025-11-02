@@ -8,7 +8,8 @@
                         <span class="text-sm text-base-content/60">{{ $news->created_at->diffForHumans() }}</span>
                     </div>
                 </div>
-                <p class="mt-1">{{ $news->message }}</p>
+                <h4>{{ $news->title}}</h4>
+                <p class="mt-1">{{ $news->content }}</p>
             </div>
         </div>
     </div>

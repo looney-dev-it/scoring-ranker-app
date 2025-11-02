@@ -20,7 +20,7 @@ class AdminUserTable extends Component
         $this->dispatch('changePasswordUser', $id);
         $this->dispatch('openUserModal');
     }
-    
+
     public function edit($id) 
     {
         $this->dispatch('editUser', $id);
@@ -31,10 +31,12 @@ class AdminUserTable extends Component
     {
         User::findOrFail($id)->delete();
 
-        // Recharge les données si tu les stockes dans une propriété
-        $this->users = User::all(); // ou ta logique de récupération
+        $this->users = User::all();
 
-        session()->flash('message', 'Utilisateur supprimé avec succès.');
+        $this->dispatch('show-toast', [
+            'type' => 'success',
+            'message' => 'User deleted'
+        ]);
     }
 
     public function render()

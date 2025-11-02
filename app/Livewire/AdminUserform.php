@@ -56,6 +56,10 @@ class AdminUserform extends Component
                 'password' => Hash::make($validatedData['password']),
                 'admin' => $validatedData['admin'],
             ]);
+            $this->dispatch('show-toast', [
+                'type' => 'success',
+                'message' => 'User added'
+            ]);
         } elseif($this->changePasswordOnly) {
             // Change Password action
             $validatedData = $this->validate([
@@ -64,6 +68,10 @@ class AdminUserform extends Component
             $user = User::findOrFail($this->userId);
             $user->update( [
                 'password' => Hash::make($validatedData['password'])
+            ]);
+            $this->dispatch('show-toast', [
+                'type' => 'success',
+                'message' => 'Password changed'
             ]);
         } else {
             // Edit User
@@ -77,6 +85,10 @@ class AdminUserform extends Component
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
                 'admin' => $validatedData['admin'],
+            ]);
+            $this->dispatch('show-toast', [
+                'type' => 'success',
+                'message' => 'User updated'
             ]);
         }
         

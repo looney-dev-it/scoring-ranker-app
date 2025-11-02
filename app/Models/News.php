@@ -7,8 +7,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class News extends Model
 {
+    protected $casts = [
+        'published_at' => 'datetime',
+        'is_published' => 'boolean'
+    ];
+
     protected $fillable = [
-        'message',
+        'title',
+        'content',
+        'is_published',
+        'published_at',
     ]; 
 
     public function user(): BelongsTo
