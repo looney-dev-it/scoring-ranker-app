@@ -9,6 +9,7 @@
                     </div>
                 </div>
                 <h4>{{ $news->title}}</h4>
+                <img src="{{asset('storage/' . $news->image_path) }}" alt="..." class="img-thumbnail">
                 <p class="mt-1">{{ $news->content }}</p>
             </div>
         </div>

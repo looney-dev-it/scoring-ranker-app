@@ -12,3 +12,8 @@
     border-top: 5px dashed #1f1f1f;
     margin-top: 10px;
 }
+
+.nav-item.active .nav-link {
+    font-weight: bold;
+    color: #0d6efd;
+}

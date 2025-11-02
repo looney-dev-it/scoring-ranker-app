@@ -35,7 +35,7 @@ class AdminNewsTable extends Component
 
     public function render()
     {
-        $this->all_news = News::get();
+        $this->all_news = News::orderBy('created_at','desc')->get();
         return view('livewire.admin-news-table');
     }
 }

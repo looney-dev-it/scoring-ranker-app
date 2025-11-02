@@ -1,5 +1,6 @@
 <div>
     <form wire:submit.prevent="submit">
+        @csrf
         <div class="form-group row">
             <label for="title" class="col-sm-2 col-form-label">Title:</label>
             <div class="col-sm-10">
@@ -16,6 +17,17 @@
                 <div>
                     @error('content') <span class="error">{{ $message }}</span> @enderror 
                 </div>
+            </div>
+        </div>
+        @if(!is_null($newsId) && !is_null($existingImagePath))
+            <img src="{{asset('storage/' . $existingImagePath) }}" alt="..." class="card-img-top img-fluid"
+     style="max-height: 150px; object-fit: cover;">
+        @endif
+        <div class="form-group row">
+            <label for="image_path" class="col-sm-2 col-form-label">Image:</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control" id="image_path" wire:model="image_path">
+                @error('image_path') <span class="error">{{ $message }}</span> @enderror
             </div>
         </div>
         <div class="form-group row">

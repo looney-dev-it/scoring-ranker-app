@@ -1,90 +1,52 @@
 
-<x-layout>
-    <x-slot:title>
-        Register
-    </x-slot:title>
+<x-auth-layout>
+        <x-slot:title>
+            Register
+        </x-slot:title>
 
-    <div class="hero min-h-[calc(100vh-16rem)]">
-        <div class="hero-content flex-col">
-            <div class="card w-96 bg-base-100">
-                <div class="card-body">
-                    <h1 class="text-3xl font-bold text-center mb-6">Create Account</h1>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center bg-primary text-white">
+                        <h4>Create Your Account</h4>
+                    </div>
+                    <div class="card-body">
+                        <form wire:submit.prevent="register">
+                            @csrf
 
-                    <form method="POST" action="/register">
-                        @csrf
-
-                        <!-- Name -->
-                        <label class="floating-label mb-6">
-                            <input type="text"
-                                   name="name"
-                                   placeholder="John Doe"
-                                   value="{{ old('name') }}"
-                                   class="input input-bordered @error('name') input-error @enderror"
-                                   required>
-                            <span>Name</span>
-                        </label>
-                        @error('name')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" class="form-control" required minlength="5" wire:model="name" placeholder="John Doe">
+                                @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
-                        @enderror
 
-                        <!-- Email -->
-                        <label class="floating-label mb-6">
-                            <input type="email"
-                                   name="email"
-                                   placeholder="[mail@example.com](<mailto:mail@example.com>)"
-                                   value="{{ old('email') }}"
-                                   class="input input-bordered @error('email') input-error @enderror"
-                                   required>
-                            <span>Email</span>
-                        </label>
-                        @error('email')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control" required minlength="5" wire:model="email" placeholder="you@example.com">
+                                @error('email') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
-                        @enderror
 
-                        <!-- Password -->
-                        <label class="floating-label mb-6">
-                            <input type="password"
-                                   name="password"
-                                   placeholder="••••••••"
-                                   class="input input-bordered @error('password') input-error @enderror"
-                                   required>
-                            <span>Password</span>
-                        </label>
-                        @error('password')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" id="password" class="form-control" wire:model="password" placeholder="••••••••">
+                                @error('password') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
-                        @enderror
 
-                        <!-- Password Confirmation -->
-                        <label class="floating-label mb-6">
-                            <input type="password"
-                                   name="password_confirmation"
-                                   placeholder="••••••••"
-                                   class="input input-bordered"
-                                   required>
-                            <span>Confirm Password</span>
-                        </label>
+                            <div class="mb-3">
+                                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                <input type="password" id="password_confirmation" class="form-control" wire:model="password_confirmation" placeholder="••••••••">
+                                @error('password_confirmation') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
 
-                        <!-- Submit Button -->
-                        <div class="form-control mt-8">
-                            <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Register
-                            </button>
-                        </div>
-                    </form>
-
-                    <div class="divider">OR</div>
-                    <p class="text-center text-sm">
-                        Already have an account?
-                        <a href="/login" class="link link-primary">Sign in</a>
-                    </p>
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <small>Already have an account? <a href="{{ route('login') }}">Log in</a></small>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</x-layout>
+</x-auth-layout>

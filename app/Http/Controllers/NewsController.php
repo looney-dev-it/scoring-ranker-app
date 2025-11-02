@@ -9,10 +9,17 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::with('user')
+        $news = News::where('is_published', true)
+            ->with('author')
             ->latest()
             ->take(50)
             ->get();
-        return view('home', ['all_news' => $news]);
+        return view('news.index', ['news' => $news]);
+    }
+
+    public function show($id)
+    {
+        $news = News::findOrFail($id);
+        return view('news.show', compact('news'));
     }
 }

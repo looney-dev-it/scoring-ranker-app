@@ -1,5 +1,6 @@
 <div>
     <form wire:submit.prevent="submit">
+        @csrf
         @if(!$changePasswordOnly)
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Name:</label>

@@ -1,74 +1,50 @@
 
-<x-layout>
+<x-auth-layout>
     <x-slot:title>
         Sign In
     </x-slot:title>
 
-    <div class="hero min-h-[calc(100vh-16rem)]">
-        <div class="hero-content flex-col">
-            <div class="card w-96 bg-base-100">
+    <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header text-center bg-primary text-white">
+                    <h4>Welcome Back</h4>
+                </div>
                 <div class="card-body">
-                    <h1 class="text-3xl font-bold text-center mb-6">Welcome Back</h1>
-                    <form method="POST" action="/login">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <!-- Email -->
-                        <label class="floating-label mb-6">
-                            <input type="email"
-                                   name="email"
-                                   placeholder="[mail@example.com](<mailto:mail@example.com>)"
-                                   value="{{ old('email') }}"
-                                   class="input input-bordered @error('email') input-error @enderror"
-                                   required
-                                   autofocus>
-                            <span>Email</span>
-                        </label>
-                        @error('email')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
-                            </div>
-                        @enderror
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email"
+                                   class="form-control @error('email') is-invalid @enderror"
+                                   value="{{ old('email') }}" required autofocus>
+                            @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
 
-                        <!-- Password -->
-                        <label class="floating-label mb-6">
-                            <input type="password"
-                                   name="password"
-                                   placeholder="••••••••"
-                                   class="input input-bordered @error('password') input-error @enderror"
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password"
+                                   class="form-control @error('password') is-invalid @enderror"
                                    required>
-                            <span>Password</span>
-                        </label>
-                        @error('password')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
-                            </div>
-                        @enderror
-
-                        <!-- Remember Me -->
-                        <div class="form-control mt-4">
-                            <label class="label cursor-pointer justify-start">
-                                <input type="checkbox"
-                                       name="remember"
-                                       class="checkbox">
-                                <span class="label-text ml-2">Remember me</span>
-                            </label>
+                            @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
 
-                        <!-- Submit Button -->
-                        <div class="form-control mt-8">
-                            <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Sign In
-                            </button>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                            <label class="form-check-label" for="remember">Remember me</label>
                         </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Sign In</button>
                     </form>
-
-                    <div class="divider">OR</div>
-                    <p class="text-center text-sm">
-                        Don't have an account?
-                        <a href="/register" class="link link-primary">Register</a>
-                    </p>
+                </div>
+                <div class="card-footer text-center">
+                    <small>Don't have an account? <a href="{{ route('register') }}">Register</a></small>
                 </div>
             </div>
         </div>
     </div>
-</x-layout>
+</div>
+
+</x-auth-layout>
