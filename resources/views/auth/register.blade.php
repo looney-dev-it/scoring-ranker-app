@@ -12,30 +12,30 @@
                         <h4>Create Your Account</h4>
                     </div>
                     <div class="card-body">
-                        <form wire:submit.prevent="register">
+                        <form method="post" action="register">
                             @csrf
 
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full Name</label>
-                                <input type="text" id="name" class="form-control" required minlength="5" wire:model="name" placeholder="John Doe">
+                                <input type="text" id="name" class="form-control" required minlength="5" name="name" placeholder="Mike Brandt">
                                 @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" id="email" class="form-control" required minlength="5" wire:model="email" placeholder="you@example.com">
+                                <input type="email" id="email" class="form-control" required minlength="5" name="email" placeholder="you@example.com">
                                 @error('email') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" id="password" class="form-control" wire:model="password" placeholder="••••••••">
+                                <input type="password" id="password" class="form-control" name="password" placeholder="••••••••">
                                 @error('password') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                <input type="password" id="password_confirmation" class="form-control" wire:model="password_confirmation" placeholder="••••••••">
+                                <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="••••••••">
                                 @error('password_confirmation') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
 

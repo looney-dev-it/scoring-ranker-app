@@ -15,8 +15,13 @@
      style="max-height: 300px; object-fit: cover;">
                     @endif
                     <div class="card-body">
-                        <h5 class="card-title">{{ $item->title }}</h5>
-                        <p class="card-text">{{ $item->content }}</p>
+                        <h5 class="card-title">{{ $item->title }}</h5>                        
+                        @php
+                            $lines = explode("\n", $item->content);
+                            $preview = implode("\n", array_slice($lines, 0, 3))."\n";
+                        @endphp
+                        <p class="card-text" style="white-space: pre-line;">{{ $preview }}</p>
+                        <a href="{{ route('news.show', $item->id) }}">...</a>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <small class="text-muted">
                                 Published {{ $item->published_at->format('d/m/Y') }} by <a href="/profile/{{$item->author->id}}">{{ $item->author->name }}</a>

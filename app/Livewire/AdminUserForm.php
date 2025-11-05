@@ -98,7 +98,6 @@ class AdminUserform extends Component
         $this->dispatch('userAdded');
     }
 
-
     public function render()
     {
         return view('livewire.admin-user-form');

@@ -5,17 +5,19 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Http\UploadedFile;
+use App\Models\Profile;
 
 class MyProfile extends Component
 {
     use WithFileUploads;
 
+    public $profileId;
     public $user;
     public $profile;
     public $bio;
     public $birth_date;
     public $photo;
-
+    public $existingPhoto;
     public $showModal = false;
 
     public function mount()
@@ -24,6 +26,8 @@ class MyProfile extends Component
         $this->profile = $this->user->profile ?? new \App\Models\Profile();
         $this->bio = $this->profile->bio;
         $this->birth_date = optional($this->profile->birth_date)->format('Y-m-d');
+        $this->profileId = $this->profile->id;
+        $this->existingPhoto = $this->profile->photo; 
     }
 
     public function openModal()
@@ -36,27 +40,30 @@ class MyProfile extends Component
         $data = $this->validate([
             'bio' => 'string|max:1000',
             'birth_date' => 'date',
-            'photo' => 'image|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($this->photo) {
-            $data['photo'] = $this->photo->store('profiles', 'public');
+        if ($this->photo instanceof UploadedFile) {
+            $path = $this->photo->store('profiles', 'public');
+        } else {
+            $path = $this->existingPhoto ?? null;
         }
 
-        $this->profile->fill([
-            'bio' => $data['bio'],
-            'birth_date' => $data['birth_date'],
-            'photo' => $data['photo'] ?? $this->profile->photo,
-        ]);
-
-        $this->profile->user_id = $this->user->id;
-        $this->profile->save();
-
+        Profile::updateOrCreate(
+            ['id' => $this->profileId],
+            [
+                'bio' => $this->bio,
+                'birth_date' => $this->birth_date,
+                'photo' => $path,
+                'user_id' => auth()->id(),
+            ]);
+        
         $this->showModal = false;
         $this->dispatch('show-toast', [
                 'type' => 'success',
                 'message' => 'Profile updated!'
             ]);
+        $this->mount();
     }
 
     public function render()

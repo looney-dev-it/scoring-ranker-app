@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\FaqController;
@@ -16,12 +17,15 @@ use App\Http\Controllers\Auth\Login;
 
 Route::get('/', [HomeController::class, 'index']);
 
+
+
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
 Route::get('/myprofile', [UserController::class, 'myprofile'])->name('user.update');
 
+Route::get('/score', [ScoreController::class, 'index']);
 Route::get('/forum', [ForumController::class, 'index']);
 Route::get('/faq', [FaqController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
@@ -39,6 +43,7 @@ Route::middleware('auth')->group(function() {
 Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/admin/user', [AdminController::class, 'user']);
 Route::get('/admin/news', [AdminController::class, 'news']);
+Route::get('/admin/score', [AdminController::class, 'score']);
 
 //REGISTER ROUTES
 

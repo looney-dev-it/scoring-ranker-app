@@ -1,0 +1,9 @@
+<x-layout>
+   <x-slot:title>
+        Forum
+    </x-slot:title>
+    
+     <div class="row">
+        <h5>Here will the score management ...</h5>
+    </div>
+</x-layout>

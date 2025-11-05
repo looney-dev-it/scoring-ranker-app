@@ -5,18 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\User;
+use App\Models\ScoreTopic;
+
 class AdminController extends Controller
 {
     //
     public function index()
     {
-        /*$news = News::with('author')
-            ->latest()
-            ->take(50)
-            ->get();
-        
-        $users = User::get();
-        return view('admin', ['news' => $news, 'users' => $users]);*/
         return view('components.admin.dashboard');
     }
 
@@ -34,5 +29,12 @@ class AdminController extends Controller
                 ->get();
 
         return view('components.admin.news', ['news' => $news]);
+    }
+
+    public function score()
+    {
+        $score_types = ScoreTopic::get();
+
+        return view('components.admin.score', ['score_types' => $score_types]);
     }
 }

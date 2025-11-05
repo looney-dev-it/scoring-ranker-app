@@ -42,6 +42,9 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
             "@php artisan migrate --force",
+            "@php -r \"is_dir('public/storage/news_images') || mkdir('public/storage/news_images', 0777, true);\"",
+            "@php -r \"is_dir('public/storage/profiles') || mkdir('public/storage/profiles', 0777, true);\"",
+            "@php artisan storage:link",
             "npm install",
             "npm run build"
         ],

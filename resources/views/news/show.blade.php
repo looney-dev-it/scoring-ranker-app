@@ -16,7 +16,7 @@
                             by <a href="/profile/{{ $news->author->id }}">{{ $news->author->name }}</a>
                         </div>
 
-                        <p class="card-text fs-5">
+                        <p class="card-text fs-5" style="white-space: pre-line;">
                             {{ $news->content }}
                         </p>
 

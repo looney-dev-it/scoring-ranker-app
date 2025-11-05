@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <livewire:admin-user-table />
+            <livewire:admin-user-table :changePasswordOnly="false"/>
         </div>
     </div>
     <script>

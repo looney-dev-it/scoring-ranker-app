@@ -15,8 +15,8 @@
             </a>
         </li>
         <li>
-            <a href="/admin/game" class="nav-link {{ Request::is('admin/game*') ? 'active' : 'text-dark' }}">
-                🎮 Game
+            <a href="/admin/score" class="nav-link {{ Request::is('admin/score*') ? 'active' : 'text-dark' }}">
+                🎮 Score
             </a>
         </li>
         <li>
