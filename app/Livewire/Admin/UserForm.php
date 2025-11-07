@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\On;
 
-class Userform extends Component
+class UserForm extends Component
 {
     public $userId;
     public $name;

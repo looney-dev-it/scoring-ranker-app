@@ -21,7 +21,7 @@
                         </p>
 
                         <div class="mt-4">
-                            <a href="{{ route('news.index') }}" class="btn btn-outline-secondary">
+                            <a href="{{ route('news') }}" class="btn btn-outline-secondary">
                                 ← Back to News
                             </a>
                         </div>

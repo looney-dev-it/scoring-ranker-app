@@ -29,6 +29,7 @@ class Form extends Component
     public function closeAddModal()
     {
         $this->reset();
+        $this->scoretopics = ScoreTopic::pluck('title', 'id');
         $this->dispatch('scoreSubmitted');
     }
 

@@ -34,33 +34,39 @@
             <x-latest-scores :scores="$latestScores" /> 
         </div>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <h5>My Scores</h5>
-            <h2>Show selector & table</h2>
-        </div>
-        <div class="col-6">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newScoreModal">
-                Add
-            </button>
-        </div>
+    @auth
         <div class="row">
-        <div class="col-12">
-            <div class="modal fade" id="newScoreModal" tabindex="-1" aria-labelledby="newScoreModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="newScoreModal">Score</h5>
-                        </div>
-                        <div class="modal-body">
-                            <livewire:score.form />
+            <div class="col-6">
+                <h5>My Scores</h5>
+                <livewire:score.my-score-table />
+            </div>
+            <div class="col-6">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newScoreModal">
+                    Add
+                </button>
+            </div>
+            <div class="row">
+            <div class="col-12">
+                <div class="modal fade" id="newScoreModal" tabindex="-1" aria-labelledby="newScoreModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newScoreModal">Score</h5>
+                            </div>
+                            <div class="modal-body">
+                                <livewire:score.form />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        </div>
+    @else
+        <div class="row">
+            <h2>Please sign in or register to be able to post scores</h2>
+        </div>
+    @endauth
     <script>
 
         window.addEventListener('scoreSubmitted', () => {

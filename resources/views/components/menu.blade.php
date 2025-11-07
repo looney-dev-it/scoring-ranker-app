@@ -6,25 +6,25 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link {{ Request::is('score*') ? 'active' : '' }}" href="/score">Score</a>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('score*') ? 'active' : '' }}" href="{{route('score')}}">Score</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('news*') ? 'active' : '' }}" href="/news">News</a>
+        <a class="nav-link {{ Request::is('news*') ? 'active' : '' }}" href="{{route('news')}}">News</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('forum*') ? 'active' : '' }}" href="/forum">Forum</a>
+        <a class="nav-link {{ Request::is('forum*') ? 'active' : '' }}" href="{{route('forum')}}">Forum</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('faq*') ? 'active' : '' }}" href="/faq">FAQ</a>
+        <a class="nav-link {{ Request::is('faq*') ? 'active' : '' }}" href="{{route('faq')}}">FAQ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('contact*') ? 'active' : '' }}" href="/contact">Contact</a>
+        <a class="nav-link {{ Request::is('contact*') ? 'active' : '' }}" href="{{route('contact')}}">Contact</a>
       </li>
       @auth
         @if(auth()->user()->admin)
         <li class="nav-item">
-              <a class="nav-link {{ Request::is('admin*') ? 'active' : '' }}" href="/admin">Admin</a>
+              <a class="nav-link {{ Request::is('admin*') ? 'active' : '' }}" href="{{route('admin')}}">Admin</a>
         </li>
         @endif
       @endauth

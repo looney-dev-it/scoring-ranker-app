@@ -25,7 +25,7 @@
     </div>
 
     <div class="card-footer text-end">
-        <a href="{{ route('news.index') }}" class="btn btn-sm btn-outline-primary">
+        <a href="{{ route('news') }}" class="btn btn-sm btn-outline-primary">
             View all news →
         </a>
     </div>

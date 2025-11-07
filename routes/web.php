@@ -19,18 +19,18 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
 Route::get('/myprofile', [UserController::class, 'myprofile'])->name('user.update');
 
 Route::get('/score', [ScoreController::class, 'index'])->name('score');
-Route::get('/forum', [ForumController::class, 'index']);
-Route::get('/faq', [FaqController::class, 'index']);
-Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/forum', [ForumController::class, 'index'])->name('forum');
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-
+Route::post('/contact', [ContactController::class, 'index'])->name('contact.send');
 /*
 Route::middleware('auth')->group(function() {
     Route::post('/chirps', [ChirpController::class, 'store']);
@@ -40,10 +40,11 @@ Route::middleware('auth')->group(function() {
 });
 */
 
-Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/user', [AdminController::class, 'user']);
 Route::get('/admin/news', [AdminController::class, 'news']);
 Route::get('/admin/score', [AdminController::class, 'score']);
+Route::get('/admin/faq', [AdminController::class, 'faq']);
 
 //REGISTER ROUTES
 
