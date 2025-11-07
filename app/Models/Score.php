@@ -14,6 +14,15 @@ class Score extends Model
         return $this->belongsTo(ScoreTopic::class, 'topic_id');
     }
 
+    public static function latestScores($limit = 5)
+    {
+        return self::with('user')
+                   ->with('topic')
+                   ->orderBy('created_at', 'desc')
+                   ->take($limit)
+                   ->get();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

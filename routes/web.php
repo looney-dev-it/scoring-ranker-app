@@ -25,7 +25,7 @@ Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
 Route::get('/myprofile', [UserController::class, 'myprofile'])->name('user.update');
 
-Route::get('/score', [ScoreController::class, 'index']);
+Route::get('/score', [ScoreController::class, 'index'])->name('score');
 Route::get('/forum', [ForumController::class, 'index']);
 Route::get('/faq', [FaqController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);

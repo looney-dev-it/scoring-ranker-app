@@ -16,12 +16,12 @@
                             <h5 class="modal-title" id="newUserModalLabel">User</h5>
                         </div>
                         <div class="modal-body">
-                            <livewire:admin-user-form />
+                            <livewire:admin.user-form />
                         </div>
                     </div>
                 </div>
             </div>
-            <livewire:admin-user-table :changePasswordOnly="false"/>
+            <livewire:admin.user-table :changePasswordOnly="false"/>
         </div>
     </div>
     <script>

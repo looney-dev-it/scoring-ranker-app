@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\News;
 
-class AdminNewsTable extends Component
+class NewsTable extends Component
 {
     public $all_news;
     protected $listeners = ['newsAdded' => 'refreshTable'];
@@ -36,6 +36,6 @@ class AdminNewsTable extends Component
     public function render()
     {
         $this->all_news = News::orderBy('created_at','desc')->get();
-        return view('livewire.admin-news-table');
+        return view('livewire.admin.news-table');
     }
 }

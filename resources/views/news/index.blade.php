@@ -24,7 +24,7 @@
                         <a href="{{ route('news.show', $item->id) }}">...</a>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <small class="text-muted">
-                                Published {{ $item->published_at->format('d/m/Y') }} by <a href="/profile/{{$item->author->id}}">{{ $item->author->name }}</a>
+                                Published {{ $item->published_at->format('d/m/Y') }} by <a href="route('user.show', ['id' => $item->author->id ])">{{ $item->author->name }}</a>
                             </small>
                             <a href="{{ route('news.show', $item->id) }}" class="btn btn-sm btn-outline-primary">More</a>
                         </div>

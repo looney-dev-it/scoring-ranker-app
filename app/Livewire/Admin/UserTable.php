@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use App\Models\User;
 use Livewire\Component;
 
-class AdminUserTable extends Component
+class UserTable extends Component
 {
     public $users;
     protected $listeners = ['userAdded' => 'refreshTable'];
@@ -42,6 +42,6 @@ class AdminUserTable extends Component
     public function render()
     {
         $this->users = User::get();
-        return view('livewire.admin-user-table');
+        return view('livewire.admin.user-table');
     }
 }

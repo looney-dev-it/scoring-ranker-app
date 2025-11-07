@@ -19,12 +19,12 @@
                             <h5 class="modal-title" id="newNewsModalLabel">News</h5>
                         </div>
                         <div class="modal-body">
-                            <livewire:admin-news-form />
+                            <livewire:admin.news-form />
                         </div>
                     </div>
                 </div>
             </div>
-            <livewire:admin-news-table />
+            <livewire:admin.news-table />
         </div>
     </div>
     <script>

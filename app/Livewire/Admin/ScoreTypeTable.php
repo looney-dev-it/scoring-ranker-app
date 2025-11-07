@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\ScoreType;
 
-class AdminScoreTypeTable extends Component
+class ScoreTypeTable extends Component
 {
 
     public $score_types;
@@ -37,7 +37,7 @@ class AdminScoreTypeTable extends Component
     public function render()
     {
         $this->score_types = ScoreType::orderBy('created_at','desc')->get();
-        return view('livewire.admin-score-type-table');
+        return view('livewire.admin.score-type-table');
     }
 
 }

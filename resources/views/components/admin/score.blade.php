@@ -19,12 +19,12 @@
                             <h5 class="modal-title" id="newScoreTypeModal">News</h5>
                         </div>
                         <div class="modal-body">
-                            <livewire:admin-news-form />
+                            <livewire:admin.score-type-form />
                         </div>
                     </div>
                 </div>
             </div>
-            <livewire:admin-score-type-table />
+            <livewire:admin.score-type-table />
         </div>
     </div>
     <div class="row">
@@ -47,12 +47,12 @@
                             <h5 class="modal-title" id="newScoreTopicModal">News</h5>
                         </div>
                         <div class="modal-body">
-                            <livewire:admin-news-form />
+                            <livewire:admin.score-topic-form />
                         </div>
                     </div>
                 </div>
             </div>
-            <livewire:admin-score-topic-table />
+            <livewire:admin.score-topic-table />
         </div>
     </div>
     <script>

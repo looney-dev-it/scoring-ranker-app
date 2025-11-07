@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\ScoreTopic;
 
-class AdminScoreTopicTable extends Component
+class ScoreTopicTable extends Component
 {
 
     public $score_topics;
@@ -37,6 +37,6 @@ class AdminScoreTopicTable extends Component
     public function render()
     {
         $this->score_topics = ScoreTopic::orderBy('created_at','desc')->get();
-        return view('livewire.admin-score-topic-table');
+        return view('livewire.admin.score-topic-table');
     }
 }

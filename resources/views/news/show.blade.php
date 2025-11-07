@@ -13,7 +13,7 @@
 
                         <div class="text-muted mb-4">
                             Published on {{ $news->published_at->format('d/m/Y') }}
-                            by <a href="/profile/{{ $news->author->id }}">{{ $news->author->name }}</a>
+                            by <a href="route('user.show', ['id' => $news->author->id ])">{{ $news->author->name }}</a>
                         </div>
 
                         <p class="card-text fs-5" style="white-space: pre-line;">

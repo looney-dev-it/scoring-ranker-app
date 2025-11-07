@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\On;
 
-class AdminUserform extends Component
+class Userform extends Component
 {
     public $userId;
     public $name;
@@ -100,6 +100,6 @@ class AdminUserform extends Component
 
     public function render()
     {
-        return view('livewire.admin-user-form');
+        return view('livewire.admin.user-form');
     }
 }

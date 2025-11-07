@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -8,7 +8,7 @@ use App\Models\News;
 use Livewire\Attributes\On;
 use Illuminate\Http\UploadedFile;
 
-class AdminNewsForm extends Component
+class NewsForm extends Component
 {
     use WithFileUploads;    
 
@@ -90,6 +90,6 @@ class AdminNewsForm extends Component
 
     public function render()
     {
-        return view('livewire.admin-news-form');
+        return view('livewire.admin.news-form');
     }
 }
