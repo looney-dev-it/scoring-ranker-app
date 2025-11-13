@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\ScoreTopic;
 use App\Models\Category;
 use App\Models\Question;
+use App\Models\ContactRequest;
 
 
 class AdminController extends Controller
@@ -47,5 +48,12 @@ class AdminController extends Controller
         $questions = Question::with('category')->get();
         return view('components.admin.faq', ['categories' => $categories,
                                             'questions' => $questions ]);
+    }
+
+    public function contact()
+    {
+        $contactrequests = ContactRequest::get();
+
+        return view('components.admin.contact', ['contactrequests' => $contactrequests]);
     }
 }

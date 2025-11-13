@@ -15,7 +15,7 @@ use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Login;
 
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('main');
 
 
 
@@ -30,7 +30,9 @@ Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-Route::post('/contact', [ContactController::class, 'index'])->name('contact.send');
+Route::get('/contact-mail', [ContactController::class, 'mail']);
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.send');
 /*
 Route::middleware('auth')->group(function() {
     Route::post('/chirps', [ChirpController::class, 'store']);
@@ -45,6 +47,7 @@ Route::get('/admin/user', [AdminController::class, 'user']);
 Route::get('/admin/news', [AdminController::class, 'news']);
 Route::get('/admin/score', [AdminController::class, 'score']);
 Route::get('/admin/faq', [AdminController::class, 'faq']);
+Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
 
 //REGISTER ROUTES
 
