@@ -46,7 +46,7 @@ class UserForm extends Component
             // New User
             $validatedData = $this->validate([
                 'name' => 'required|min:3',
-                'email' => 'required|email',
+                'email' => 'required|email|unique:users,email',
                 'password' => 'required|min:8|confirmed',
                 'admin' => 'required',
             ]);
@@ -77,7 +77,7 @@ class UserForm extends Component
             // Edit User
             $validatedData = $this->validate([
                 'name' => 'required|min:3',
-                'email' => 'required|email',
+                'email' => 'required|email|unique:users,email',
                 'admin' => 'required',
             ]);
             $user = User::findOrFail($this->userId);

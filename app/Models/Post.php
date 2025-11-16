@@ -17,4 +17,10 @@ class Post extends Model
      {
         return $this->belongsTo(Thread::class, 'thread_id');
      }
+
+     public function likedByUsers()
+     {
+         return $this->belongsToMany(User::class, 'post_user_like')
+                     ->withTimestamps();
+     }
 }

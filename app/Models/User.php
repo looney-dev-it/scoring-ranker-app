@@ -76,4 +76,10 @@ class User extends Authenticatable
     {
         return (bool) $this->admin;
     }
+
+    public function likedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'post_user_like')
+                    ->withTimestamps();
+    }
 }

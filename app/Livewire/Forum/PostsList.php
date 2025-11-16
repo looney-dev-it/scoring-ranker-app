@@ -10,6 +10,22 @@ class PostsList extends Component
 
     protected $listeners = ['postAdded' => '$refresh'];
 
+    public function toggleLike($postId)
+    {
+        $user = auth()->user();
+        $post = \App\Models\Post::findOrFail($postId);
+
+        if ($post->likedByUsers()->where('user_id', $user->id)->exists()) {
+            $post->likedByUsers()->detach($user->id);
+        } else {
+            $post->likedByUsers()->attach($user->id);
+        }
+
+        $this->dispatch('show-toast', [
+            'type' => 'success',
+            'message' => 'Like updated!'
+        ]);
+    }
     public function render()
     {
         
