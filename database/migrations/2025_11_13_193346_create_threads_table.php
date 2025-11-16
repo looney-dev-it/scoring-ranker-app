@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
+
+        Schema::create('threads', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->string('title');
-            $table->text('content');
-            $table->string('image_path')->nullable();
-            $table->timestamp('published_at')->nullable();
-            $table->boolean('is_published');
+            $table->string('title', 255);
+            $table->boolean('pinned')->default(false);
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('scoretopic_id')->constrained('score_topics');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('threads');
     }
 };

@@ -27,6 +27,9 @@ Route::get('/myprofile', [UserController::class, 'myprofile'])->name('user.updat
 
 Route::get('/score', [ScoreController::class, 'index'])->name('score');
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
+Route::get('/forum/topic/{id}', [ForumController::class, 'showScoreTopic'])->name('forum.topic');
+Route::get('/forum/topic/{topicid}/thread/{threadid}', [ForumController::class, 'showThread'])->name('forum.thread');
+
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 

@@ -49,8 +49,16 @@ class ContactRequestTable extends Component
                                 );
             } catch (\Exception $e) {
                 Log::error('Fail to send email contact-request : '. $e->getMessage());
+                $this->dispatch('show-toast', [
+                    'type' => 'danger',
+                    'message' => 'There has been an issue sending your reply!'
+                ]);
             }
 
+            $this->dispatch('show-toast', [
+                    'type' => 'success',
+                    'message' => 'Reply sent successfully!'
+                ]);
             $this->replyMessage = '';
             $this->refreshTable();
             $this->dispatch('close-modal');

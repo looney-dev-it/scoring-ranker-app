@@ -15,4 +15,9 @@ class ScoreTopic extends Model
         return $this->belongsTo(ScoreType::class, 'type_id');
     }
 
+    public function threads()
+    {
+        return $this->hasMany(Thread::class,'scoretopic_id');
+    }
+
 }
