@@ -17,24 +17,30 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
-
-Route::get('/news', [NewsController::class, 'index'])->name('news');
-Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
-
+Route::get('/score', [ScoreController::class, 'index'])->name('score');
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
 
-Route::get('/score', [ScoreController::class, 'index'])->name('score');
-Route::get('/forum', [ForumController::class, 'index'])->name('forum');
-Route::get('/forum/topic/{id}', [ForumController::class, 'showScoreTopic'])->name('forum.topic');
-Route::get('/forum/topic/{topicid}/thread/{threadid}', [ForumController::class, 'showThread'])->name('forum.thread');
+// News
+Route::prefix('news')->group(function() {
+    Route::get('/', [NewsController::class, 'index'])->name('news');
+    Route::get('/{id}', [NewsController::class, 'show'])->name('news.show');
+});
 
-Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+// Forum
+Route::prefix('forum')->group(function() {
+    Route::get('/', [ForumController::class, 'index'])->name('forum');
+    Route::get('/topic/{id}', [ForumController::class, 'showScoreTopic'])->name('forum.topic');
+    Route::get('/topic/{topicid}/thread/{threadid}', [ForumController::class, 'showThread'])->name('forum.thread');
+});
+
+// Contact form
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.send');
 
 
 Route::middleware('auth')->group(function() {
+    // My Page menu
     Route::get('/myprofile', [UserController::class, 'myprofile'])->name('user.update');
     //LOGOUT ROUTE
     Route::post('/logout', Logout::class)->name('logout');
