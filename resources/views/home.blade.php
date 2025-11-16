@@ -1,18 +1,15 @@
 <x-layout>
     <div class="row">
         <div class="col-8">
-            <x-latest-scores :scores="$latestScores" /> 
+            <livewire:score.latest-scores />
         </div>
         <div class="col-4">
-            <x-latest-news :news="$latestNews" /> 
+            <livewire:news.latest-news />
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
-            <h2>Here forum part ?!</h2>
-        </div>
-        <div class="col-6">
-            <h2>I don't know ...</h2>
+        <div class="col-8">
+            <x-forum-latest :threads="$threads" />
         </div>
     </div>
 </x-layout>

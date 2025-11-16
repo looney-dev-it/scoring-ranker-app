@@ -4,17 +4,18 @@ namespace App\Livewire\Score;
 
 use Livewire\Component;
 use App\Models\Score;
+use Livewire\WithPagination;
 
 class MyScoreTable extends Component
 {
-    public $filter;
-    public $scores;
+    use WithPagination;
 
+    public $filter;
     protected $listeners = ['scoreAdded' => 'refreshTable'];
 
     public function refreshTable()
     {
-        $this->loadData();
+        $this->resetPage();
     }
 
     public function edit($id) 
@@ -27,8 +28,7 @@ class MyScoreTable extends Component
     {
         Score::findOrFail($id)->delete();
 
-        // $this->score_topics = ScoreTopic::all();
-        $this->loadData();
+        $this->refreshTable();
 
         $this->dispatch('show-toast', [
             'type' => 'success',
@@ -36,22 +36,14 @@ class MyScoreTable extends Component
         ]);
     }
 
-    public function mount()
-    {
-        $this->loadData();
-    }
-
-    public function loadData()
-    {
-        $this->scores = Score::with('user')
-                            ->with('topic')
-                            ->where('user_id', auth()->id())
-                            ->orderByDesc('created_ad')
-                            ->get();
-    }
-
     public function render()
     {
-        return view('livewire.score.my-score-table');
+        return view('livewire.score.my-score-table', [
+            'scores' => Score::with('user')
+                            ->with('topic')
+                            ->where('user_id', auth()->id())
+                            ->orderByDesc('created_at')
+                            ->paginate(5)
+        ]);
     }
 }

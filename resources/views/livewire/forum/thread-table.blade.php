@@ -39,4 +39,7 @@
             @endforelse
         </tbody>
     </table>
+    <div class="mt-3">
+        {{ $threads->links() }}
+    </div>
 </div>

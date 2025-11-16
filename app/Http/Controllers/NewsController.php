@@ -11,6 +11,7 @@ class NewsController extends Controller
     {
         $news = News::where('is_published', true)
             ->with('author')
+            ->with('comments')
             ->latest()
             ->take(50)
             ->get();

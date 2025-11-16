@@ -13,17 +13,15 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Login;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 Route::get('/', [HomeController::class, 'index'])->name('main');
-
-
 
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('user.show');
-Route::get('/myprofile', [UserController::class, 'myprofile'])->name('user.update');
 
 Route::get('/score', [ScoreController::class, 'index'])->name('score');
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
@@ -33,41 +31,37 @@ Route::get('/forum/topic/{topicid}/thread/{threadid}', [ForumController::class, 
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-Route::get('/contact-mail', [ContactController::class, 'mail']);
-
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.send');
-/*
+
+
 Route::middleware('auth')->group(function() {
-    Route::post('/chirps', [ChirpController::class, 'store']);
-    Route::get('/chirps/{chirp}/edit', [ChirpController::class, 'edit']);
-    Route::put('/chirps/{chirp}', [ChirpController::class, 'update']);
-    Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy']);
+    Route::get('/myprofile', [UserController::class, 'myprofile'])->name('user.update');
+    //LOGOUT ROUTE
+    Route::post('/logout', Logout::class)->name('logout');
 });
-*/
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/admin/user', [AdminController::class, 'user']);
-Route::get('/admin/news', [AdminController::class, 'news']);
-Route::get('/admin/score', [AdminController::class, 'score']);
-Route::get('/admin/faq', [AdminController::class, 'faq']);
-Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
 
-//REGISTER ROUTES
+Route::middleware(['auth', 'is_admin'])->group(function() {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/user', [AdminController::class, 'user']);
+    Route::get('/admin/news', [AdminController::class, 'news']);
+    Route::get('/admin/score', [AdminController::class, 'score']);
+    Route::get('/admin/faq', [AdminController::class, 'faq']);
+    Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
+});
 
-Route::view('/register', 'auth.register')
-    ->middleware('guest')
-    ->name('register');
-Route::post('/register', Register::class)
-    ->middleware('guest');
+Route::middleware('guest')->group(function() {
+    //REGISTER ROUTES
+    Route::view('/register', 'auth.register')->name('register');    
+    Route::post('/register', Register::class);
 
-//LOGIN ROUTES
-Route::view('/login', 'auth.login')
-    ->middleware('guest')
-    ->name('login');
-Route::post('/login', Login::class)
-    ->middleware('guest');
+    //LOGIN ROUTES
+    Route::view('/login', 'auth.login')->name('login');
+    Route::post('/login', Login::class);
 
-//LOGOUT ROUTE
-Route::post('/logout', Logout::class)
-    ->middleware('auth')
-    ->name('logout');
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotForm'])->name('password.request');
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
+    
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
+});

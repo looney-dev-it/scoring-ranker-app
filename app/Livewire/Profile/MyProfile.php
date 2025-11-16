@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Profile;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -22,6 +22,7 @@ class MyProfile extends Component
 
     public function mount()
     {
+        
         $this->user = auth()->user();
         $this->profile = $this->user->profile ?? new \App\Models\Profile();
         $this->bio = $this->profile->bio;
@@ -68,6 +69,6 @@ class MyProfile extends Component
 
     public function render()
     {
-        return view('livewire.my-profile');
+        return view('livewire.profile.my-profile');
     }
 }

@@ -40,6 +40,9 @@
                     </form>
                 </div>
                 <div class="card-footer text-center">
+                    <small>Forgot your password? <a href="{{ route('password.request') }}">forgot</a></small>
+                </div>
+                <div class="card-footer text-center">
                     <small>Don't have an account? <a href="{{ route('register') }}">Register</a></small>
                 </div>
             </div>

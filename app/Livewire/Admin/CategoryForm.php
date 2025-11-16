@@ -12,6 +12,15 @@ class CategoryForm extends Component
     public $name;
 
 
+    public function mount()
+    {
+        $user = auth()->user();
+
+        if (!$user || !$user->is_admin) {
+            abort(403);
+        }
+    }
+
     #[On('editCategory')]
     public function loadCategory($id)
     {

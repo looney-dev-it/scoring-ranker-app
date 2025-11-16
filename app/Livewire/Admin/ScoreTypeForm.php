@@ -12,6 +12,15 @@ class ScoreTypeForm extends Component
     public $name;
 
 
+    public function mount()
+    {
+        $user = auth()->user();
+
+        if (!$user || !$user->is_admin) {
+            abort(403);
+        }
+    }
+
     #[On('editScoreType')]
     public function loadScoreType($id)
     {

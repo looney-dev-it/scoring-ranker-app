@@ -9,7 +9,11 @@
 
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h5>Threads</h5>
-            <livewire:forum.create-thread :scoreTopic="$scoreTopic->id" />
+            @auth
+                <livewire:forum.create-thread :scoreTopic="$scoreTopic->id" />
+            @else
+                <p><small>Please login to start a new thread</small></p>
+            @endauth
         </div>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <a href="{{ route("forum") }}">Back to topics</a>

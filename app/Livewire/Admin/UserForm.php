@@ -98,6 +98,15 @@ class UserForm extends Component
         $this->dispatch('userAdded');
     }
 
+    public function mount()
+    {
+        $user = auth()->user();
+
+        if (!$user || !$user->is_admin) {
+            abort(403);
+        }
+    }
+
     public function render()
     {
         return view('livewire.admin.user-form');

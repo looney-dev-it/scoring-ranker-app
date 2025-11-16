@@ -70,6 +70,11 @@ class ScoreTopicForm extends Component
 
     public function mount() 
     {
+        $user = auth()->user();
+
+        if (!$user || !$user->is_admin) {
+            abort(403);
+        }
         $this->scoretypes = ScoreType::pluck('name', 'id');
     }
 

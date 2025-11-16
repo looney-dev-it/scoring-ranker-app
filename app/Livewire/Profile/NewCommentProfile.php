@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Livewire\Forum;
+namespace App\Livewire\Profile;
 
 use Livewire\Component;
 
-class NewPost extends Component
+class NewCommentProfile extends Component
 {
-
-    public $thread;
+     public $profile;
     public $content;
 
     public function mount()
@@ -19,19 +18,19 @@ class NewPost extends Component
 
     public function submit()
     {
-        $this->thread->posts()->create([
+        $this->profile->comments()->create([
             'user_id' => auth()->id(),
+            'profile_id' => $this->profile->id,
             'content' => $this->content,
         ]);
 
         $this->reset('content');
 
         // Émet l’événement pour rafraîchir PostsList
-        $this->dispatch('postAdded');
+        $this->dispatch('commentAdded');
     }
-
     public function render()
     {
-        return view('livewire.forum.new-post');
+        return view('livewire.profile.new-comment-profile');
     }
 }

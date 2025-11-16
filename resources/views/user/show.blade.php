@@ -5,7 +5,8 @@
             <div class="card p-4 shadow-sm">
                 <div class="text-center mb-4">
                     @if($profile->photo)
-                        <img src="{{ asset('storage/' . $profile->photo) }}" class="rounded-circle mb-3" width="180" height="180">
+                        <img src="{{ asset('storage/' . $profile->photo) }}" class="rounded-circle mb-3" width="180"
+                            height="180">
                     @endif
                 </div>
 
@@ -24,7 +25,24 @@
                     </div>
                 </div>
             </div>
-         @else
+            <div class="row justify-content-center mt-3">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <h5>Comments</h5>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <livewire:profile.comments-list-profile :profile="$profile" />
+                    @auth
+                        <livewire:profile.new-comment-profile :profile="$profile" />
+                    @else
+                        <p><small>Please login to post a comment</small></p>
+                    @endauth
+                </div>
+            </div>
+        @else
             <h4>This user has not yet entered his profile</h4>
         @endif
     </div>

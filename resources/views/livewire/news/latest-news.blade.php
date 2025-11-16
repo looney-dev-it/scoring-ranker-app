@@ -1,6 +1,9 @@
 <div class="card shadow-sm mb-4">
     <div class="card-header">
-        <h5 class="mb-0">Latest News</h5>
+        <a class="text-dark text-decoration-none" href="{{route('news')}}">
+            <h5 class="mb-0">Latest News</h5>
+        </a>
+
     </div>
 
     <div class="card-body">

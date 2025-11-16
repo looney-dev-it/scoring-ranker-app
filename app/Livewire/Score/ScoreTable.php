@@ -11,12 +11,19 @@ class ScoreTable extends Component
     public $filter;
     public $scores;
 
+    protected $listeners = ['scoreAdded' => 'refreshTable'];
+
     public function mount($filter)
     {
         $this->filter = $filter;
         $this->loadData();
     }
 
+    public function refreshTable()
+    {
+        $this->loadData();
+    }
+    
     public function loadData()
     {
         $this->scores = Score::with('user')

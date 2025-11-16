@@ -5,7 +5,7 @@
                 <div class="card shadow-sm">
                     @if ($news->image_path)
                         <img src="{{ asset('storage/' . $news->image_path) }}" alt="News image"
-                             class="card-img-top img-fluid" style="max-height: 400px; object-fit: cover;">
+                            class="card-img-top img-fluid" style="max-height: 400px; object-fit: cover;">
                     @endif
 
                     <div class="card-body">
@@ -27,6 +27,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8">
+                <h5>Comments</h5>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8">
+                <livewire:news.comments-list-news :news="$news" />
+                @auth
+                    <livewire:news.new-comment-news :news="$news" />
+                @else
+                    <p><small>Please login to post a comment</small></p>
+                @endauth
             </div>
         </div>
     </div>

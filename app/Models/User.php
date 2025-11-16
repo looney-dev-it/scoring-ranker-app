@@ -46,6 +46,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'admin'=> 'boolean',
         ];
     }
 
@@ -63,11 +64,16 @@ class User extends Authenticatable
 
     public function news(): HasMany
     {
-        return $this->hasMany(News::class);
+        return $this->hasMany(News::class, 'user_id');;
     }
 
     public function profile()
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(Profile::class, 'user_id');
+    }
+
+    public function getIsAdminAttribute(): bool
+    {
+        return (bool) $this->admin;
     }
 }

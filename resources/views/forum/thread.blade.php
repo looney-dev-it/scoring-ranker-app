@@ -15,7 +15,10 @@
         <h5 class="mb-3">Posts ({{ $thread->posts->count() }})</h5>
 
         <livewire:forum.posts-list :thread="$thread" />
-
-        <livewire:forum.new-post :thread="$thread" />
+        @auth
+            <livewire:forum.new-post :thread="$thread" />
+        @else
+            <p><small>Please login to post a reply</small></p>
+        @endauth
     </div>
 </x-layout>

@@ -21,4 +21,9 @@ class Profile extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(CommentProfile::class,'profile_id');
+    }
 }

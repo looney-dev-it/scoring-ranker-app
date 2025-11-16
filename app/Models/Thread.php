@@ -9,7 +9,7 @@ class Thread extends Model
     //
     protected $fillable = ['scoretopic_id', 'title', 'user_id', 'pinned'];
 
-    public function type()
+    public function topic()
     {
         return $this->belongsTo(ScoreTopic::class, 'scoretopic_id');
     }

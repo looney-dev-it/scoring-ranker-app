@@ -16,6 +16,13 @@ class CreateThread extends Component
         'content' => 'required|string|min:5',
     ];
 
+    public function mount()
+    {
+        if (!auth()->check()) {
+            abort(403);
+        }
+    }
+    
     public function store()
     {
         $this->validate();

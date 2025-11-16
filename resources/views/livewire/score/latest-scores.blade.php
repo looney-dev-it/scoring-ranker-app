@@ -1,6 +1,6 @@
-<div class="card shadow-sm mb-4">
-    <div class="card-header bg-primary text-white">
-        <a class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover text-white" href="{{route('score')}}">
+<div class="card shadow-sm mb-4" wire:poll.5000ms>
+    <div class="card-header">
+        <a class="text-dark text-decoration-none" href="{{route('score')}}">
             <h5 class="mb-0">Latest Scores</h5>
         </a>
     </div>
@@ -25,7 +25,7 @@
                         @foreach ($scores as $s)
                             <tr>
                                 <td>
-                                    <a class="text-decoration-none" href="{{ route('user.show', ['id' => $s->user->id ]) }}">
+                                    <a class="text-decoration-none" href="{{ route('user.show', ['id' => $s->user->id]) }}">
                                         {{ $s->user->name }}
                                     </a>
                                 </td>

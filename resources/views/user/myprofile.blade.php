@@ -1,3 +1,3 @@
 <x-layout>
-    <livewire:my-profile />
+    <livewire:profile.my-profile />
 </x-layout>

@@ -19,6 +19,15 @@ class NewsForm extends Component
     public $is_published = false;
     public $existingImagePath;
 
+    public function mount()
+    {
+        $user = auth()->user();
+
+        if (!$user || !$user->is_admin) {
+            abort(403);
+        }
+    }
+
     public function closeAddModel()
     {
         $this->reset();
