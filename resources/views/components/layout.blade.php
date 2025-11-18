@@ -9,7 +9,29 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
-    <body class="min-h-screen flex flex-col bg-base-200 font-sans">
+    <body class="min-h-screen flex flex-col bg-base-200 font-sans">        
+        
+        @if(session('success'))
+            <div class="position-fixed start-50 top-0 translate-middle" style="z-index: 1050;margin-top: 20px;">
+                <div id="successToast" class="toast align-items-center bg-success text-white border-0 rounded-shadow" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ session('success') }}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const toastEl = document.getElementById('successToast');
+                    const toast = new bootstrap.Toast(toastEl, { delay: 3000 }); 
+                    toast.show();
+                });
+            </script>
+        @endif
+
         <x-menu />
         
         <div class="container">
