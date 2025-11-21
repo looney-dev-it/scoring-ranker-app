@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             NewsSeeder::class,
             ProfileSeeder::class,
-            CommentSeeder:class,
+            CommentSeeder::class,
             ScoreSeeder::class,
             FAQSeeder::class,
             ForumSeeder::class,

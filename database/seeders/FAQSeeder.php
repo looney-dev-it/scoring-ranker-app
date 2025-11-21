@@ -17,7 +17,7 @@ class FAQSeeder extends Seeder
     {
         
         $faker = Faker::create();
-        $categorie_names = ['General', 'Score', 'Forum', 'Profile', 'ScoreTopic']
+        $categorie_names = ['General', 'Score', 'Forum', 'Profile', 'ScoreTopic'];
         $categories = collect();
         for ($i = 0; $i < 5; $i++) {
             $categories->push(Category::create([
