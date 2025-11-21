@@ -1,18 +1,27 @@
-````markdown
+```markdown
 # 📊 Scoring Ranker App
 
-A Laravel application to manage and rank scores with custom configuration (emails, topics, etc.).
+## 📖 Project Description
+
+Scoring Ranker App is a **fully configurable scoring application** that allows you to define your own categories and enable users to add scores while tracking their progress in the rankings.
+
+In addition, the application includes a **built‑in Forum** that is automatically created for each category, fostering interaction and discussion among users.
+
+The system is **securely developed on the Laravel framework**, ensuring reliability, scalability, and modern best practices.
+
+This project was created as part of the **Backend Web Development course at EHB**.
+```
 
 ---
 
 ## 🚀 Installation
 
 1. **Clone the repository**
+
     ```bash
     git clone <repo_name>
     cd scoring-ranker-app
     ```
-````
 
 2. **Set up environment**
 
