@@ -1,13 +1,21 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/blank-livewire-starter-kit",
+    "name": "looney-dev-it/scoring-ranker-app",
     "type": "project",
-    "description": "The official Laravel starter kit for Livewire.",
+    "description": "Scoring Ranker App is a fully configurable scoring application that allows you to define your own categories and enable users to add scores while tracking their progress in the rankings.",
     "keywords": [
         "laravel",
-        "framework"
+        "framework",
+        "scoring",
+        "ranking"
     ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Dominique Callaert",
+            "email": "dcallaert@gmail.com"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
