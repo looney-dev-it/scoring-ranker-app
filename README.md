@@ -23,7 +23,7 @@ This project was created as part of the **Backend Web Development course at EHB*
 
 2. **Set up environment**
 
-    - Create your `.env` file (see example below).
+    - Edit your `.env` file (see example below for email configuration).
     - Configure your database and SMTP server.
 
 3. **Configure emails**
