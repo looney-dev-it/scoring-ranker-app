@@ -39,12 +39,6 @@ class UserSeeder extends Seeder
                             'password' => bcrypt('password'),
                             'admin' => (boolean) 'fase'
                         ]),
-                        User::create([
-                            'name' => 'Dominique Callaert',
-                            'email' => 'dcallaert@gmail.com',
-                            'password' => bcrypt('illusion'),
-                            'admin' => (boolean) 'true'
-                        ]),
                     ])
                     : User::take(4)->get();
     }
