@@ -33,12 +33,31 @@ This project was created as part of the **Backend Web Development course at EHB*
 4. **Install dependencies**
 
     ```bash
-    composer install
+    composer setup
     ```
 
 5. **Initialize the database**
+
     ```bash
     php artisan migrate:fresh --seed
+    ```
+
+6. **Run your development environment**
+
+    ```bash
+    composer remote dev
+    ```
+
+7. **For production environment**
+    ### Please refer to laravel documentation : https://laravel.com/docs/12.x/deployment
+    ```bash
+    composer setup --optimize-autoloader --no-dev
+    npm run build
+    php artisan config:cache
+    php artisan route:cache
+    php artisan view:cache
+    php artisan event:cache
+    php artisan migrate --force
     ```
 
 ---
