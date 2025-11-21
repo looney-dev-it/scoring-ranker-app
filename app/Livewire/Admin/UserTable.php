@@ -8,7 +8,7 @@ use Livewire\Component;
 class UserTable extends Component
 {
     public $users;
-    protected $listeners = ['userAdded' => 'refreshTable'];
+    protected $listeners = ['scoreTypeSubmitted' => 'refreshTable'];
 
     public function refreshTable()
     {

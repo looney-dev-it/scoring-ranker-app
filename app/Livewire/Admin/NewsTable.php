@@ -8,7 +8,7 @@ use App\Models\News;
 class NewsTable extends Component
 {
     public $all_news;
-    protected $listeners = ['newsAdded' => 'refreshTable'];
+    protected $listeners = ['newsSubmitted' => 'refreshTable'];
 
     public function refreshTable()
     {

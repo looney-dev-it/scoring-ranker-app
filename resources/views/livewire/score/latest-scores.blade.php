@@ -32,6 +32,7 @@
                                 <td>{{ $s->topic->title }}</td>
                                 <td>
                                     <span class="badge bg-success">{{ $s->score }}</span>
+                                    {{ $s->topic->unit }}
                                 </td>
                                 <td>{{ $s->created_at->format('d/m/Y H:i') }}</td>
                             </tr>

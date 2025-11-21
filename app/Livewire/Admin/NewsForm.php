@@ -84,7 +84,6 @@ class NewsForm extends Component
         }
         $this->reset();
         $this->dispatch('newsSubmitted');
-        $this->dispatch('newsAdded');
     }
 
     public function render()

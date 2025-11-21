@@ -59,7 +59,6 @@ class ScoreTopicForm extends Component
         $this->reset();
         $this->scoretypes = ScoreType::pluck('name', 'id');
         $this->dispatch('scoreTopicSubmitted');
-        $this->dispatch('scoreTopicAdded');
     }
 
     public function mount() 

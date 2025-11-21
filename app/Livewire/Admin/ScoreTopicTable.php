@@ -9,11 +9,11 @@ class ScoreTopicTable extends Component
 {
 
     public $score_topics;
-    protected $listeners = ['scoreTopicAdded' => 'refreshTable'];
+    protected $listeners = ['scoreTopicSubmitted' => 'refreshTable'];
 
     public function refreshTable()
     {
-        $this->score_types = ScoreTopic::get(); 
+        $this->score_topics = ScoreTopic::get(); 
     }
 
     public function edit($id) 

@@ -59,7 +59,6 @@ class QuestionForm extends Component
         $this->reset();
         $this->categories = Category::pluck('name', 'id');
         $this->dispatch('questionSubmitted');
-        $this->dispatch('questionAdded');
     }
 
     public function mount()

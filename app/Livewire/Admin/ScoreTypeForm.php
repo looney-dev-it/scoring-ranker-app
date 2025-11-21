@@ -57,7 +57,6 @@ class ScoreTypeForm extends Component
         }
         $this->reset();
         $this->dispatch('scoreTypeSubmitted');
-        $this->dispatch('scoreTypeAdded');
     }
 
     public function render()

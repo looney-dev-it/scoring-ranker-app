@@ -22,6 +22,7 @@ class ThreadTable extends Component
             ->with(['posts' => function ($query) {
                 $query->latest()->limit(1);
             }, 'user'])
+            ->orderByDesc('pinned')
             ->orderByDesc('created_at')
             ->paginate(10); // number of threads per page
 

@@ -8,7 +8,7 @@ use App\Models\Question;
 class QuestionTable extends Component
 {
     public $questions;
-    protected $listeners = ['questionAdded' => 'refreshTable'];
+    protected $listeners = ['questionSubmitted' => 'refreshTable'];
 
     public function mount() 
     {

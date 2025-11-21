@@ -55,7 +55,6 @@ class CategoryForm extends Component
         }
         $this->reset();
         $this->dispatch('categorySubmitted');
-        $this->dispatch('categoryAdded');
     }
 
     public function render()

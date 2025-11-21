@@ -25,7 +25,7 @@ class ForumSeeder extends Seeder
 
             $threads[] = [
                 'title' => $faker->sentence(6),
-                'pinned' => $faker->boolean(20),
+                'pinned' => $faker->boolean(90),
                 'user_id' => $faker->randomElement($users),
                 'scoretopic_id' => $faker->randomElement($topics),
                 'created_at' => $now,

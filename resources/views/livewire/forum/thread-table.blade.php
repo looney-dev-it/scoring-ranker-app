@@ -2,6 +2,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
+                <th></th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Responses</th>
@@ -11,6 +12,7 @@
         <tbody>
             @forelse($threads as $thread)
                 <tr>
+                    <td>{{ $thread->pinned ? "📌" : "" }}</td>
                     <td>
                         <a href="{{ route('forum.thread', [$scoreTopic->id, $thread->id]) }}">
                             {{ $thread->title }}

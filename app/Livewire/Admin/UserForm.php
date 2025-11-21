@@ -97,7 +97,6 @@ class UserForm extends Component
         $this->changePasswordOnly = false;
         $this->reset();
         $this->dispatch('userSubmitted');
-        $this->dispatch('userAdded');
     }
 
     public function mount()

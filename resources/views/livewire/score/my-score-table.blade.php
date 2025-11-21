@@ -22,7 +22,7 @@
             </button>
           </td>
           <td>{{ $st->topic->title }}</td>
-          <td><span class="badge bg-success">{{ $st->score }}</span></td>
+          <td><span class="badge bg-success">{{ $st->score }}</span>{{ $st->topic->unit }}</td>
         </tr>
       @empty
         <tr>

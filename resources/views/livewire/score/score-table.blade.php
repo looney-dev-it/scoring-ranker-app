@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th scope="col">User</th>
-      <th scope="col">Score</th>
+      <th scope="col">Score({{ $unit }})</th>
     </tr>
   </thead>
   <tbody>

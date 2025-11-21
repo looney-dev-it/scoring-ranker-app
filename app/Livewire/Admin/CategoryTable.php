@@ -8,7 +8,7 @@ use App\Models\Category;
 class CategoryTable extends Component
 {
     public $categories;
-    protected $listeners = ['categoryAdded' => 'refreshTable'];
+    protected $listeners = ['categorySubmitted' => 'refreshTable'];
 
     public function refreshTable()
     {

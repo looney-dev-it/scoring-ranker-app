@@ -9,7 +9,7 @@ class ScoreTypeTable extends Component
 {
 
     public $score_types;
-    protected $listeners = ['scoreTypeAdded' => 'refreshTable'];
+    protected $listeners = ['scoreTypeSubmitted' => 'refreshTable'];
 
     public function refreshTable()
     {

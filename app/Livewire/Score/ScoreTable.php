@@ -4,15 +4,18 @@ namespace App\Livewire\Score;
 
 use Livewire\Component;
 use App\Models\Score;
+use App\Models\ScoreTopic;
 use Illuminate\Support\Facades\DB;
 
 class ScoreTable extends Component
 {
     public $filter;
     public $scores;
+    public $unit;
 
     protected $listeners = ['scoreAdded' => 'refreshTable'];
 
+    // $filter : $id => id of scoretopic_id
     public function mount($filter)
     {
         $this->filter = $filter;
@@ -26,6 +29,7 @@ class ScoreTable extends Component
     
     public function loadData()
     {
+        $this->unit = ScoreTopic::where('id', $this->filter)->first()->unit;
         $this->scores = Score::with('user')
                             ->select('user_id', DB::raw('SUM(score) as total_score'))
                             ->where('topic_id', $this->filter)
