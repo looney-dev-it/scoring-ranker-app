@@ -25,6 +25,7 @@ class ContactRequestTable extends Component
     }
 
     public function markAsTreated() {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         $cr = ContactRequest::find($this->selectedId);
         $cr->treated = !$cr->treated;
         $cr->save();
@@ -38,6 +39,7 @@ class ContactRequestTable extends Component
 
     public function sendReply()
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         if ($this->selectedContact && $this->replyMessage) {
             $this->selectedContact->treated = true;
             $this->selectedContact->save();

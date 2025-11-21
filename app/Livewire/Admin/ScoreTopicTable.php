@@ -24,6 +24,7 @@ class ScoreTopicTable extends Component
 
     public function delete($id)
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         ScoreTopic::findOrFail($id)->delete();
 
         $this->score_topics = ScoreTopic::all();

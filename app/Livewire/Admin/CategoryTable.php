@@ -17,12 +17,14 @@ class CategoryTable extends Component
 
     public function edit($id) 
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         $this->dispatch('editCategory', $id);
         $this->dispatch('openCategoryModal');
     }
 
     public function delete($id)
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         Category::findOrFail($id)->delete();
 
         $this->categories = Category::all();

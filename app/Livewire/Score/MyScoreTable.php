@@ -20,12 +20,16 @@ class MyScoreTable extends Component
 
     public function edit($id) 
     {
+        abort_unless(auth()->check(), 403);
+        
         $this->dispatch('editScore', $id);
         $this->dispatch('openScoreModal');
     }
 
     public function delete($id)
     {
+        abort_unless(auth()->check(), 403);
+        
         Score::findOrFail($id)->delete();
 
         $this->refreshTable();

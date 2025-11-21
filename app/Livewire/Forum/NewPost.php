@@ -12,13 +12,13 @@ class NewPost extends Component
 
     public function mount()
     {
-        if (!auth()->check()) {
-            abort(403);
-        }
+        abort_unless(auth()->check(), 403);
     }
 
     public function submit()
     {
+        abort_unless(auth()->check(), 403);
+
         $this->thread->posts()->create([
             'user_id' => auth()->id(),
             'content' => $this->content,
@@ -26,7 +26,7 @@ class NewPost extends Component
 
         $this->reset('content');
 
-        // Émet l’événement pour rafraîchir PostsList
+        // Event to refresh PostsList component
         $this->dispatch('postAdded');
     }
 

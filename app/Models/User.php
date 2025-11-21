@@ -72,11 +72,13 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'user_id');
     }
 
+    /* Laravel Accessor concept : get{AttributeName}Attribute -> $user->is_admin */
     public function getIsAdminAttribute(): bool
     {
         return (bool) $this->admin;
     }
 
+    /* Many2Many relationship to get posts likes by user */
     public function likedPosts()
     {
         return $this->belongsToMany(Post::class, 'post_user_like')

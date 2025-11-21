@@ -17,7 +17,7 @@ class ResetPasswordController extends Controller
         ]);
     }
 
-    // Traite la réinitialisation
+    // Manage the reset password request
     public function reset(Request $request)
     {
         $request->validate([

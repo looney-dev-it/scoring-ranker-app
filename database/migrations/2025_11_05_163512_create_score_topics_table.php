@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('unit');
-            $table->foreignId('type_id')->constrained('score_types');
+            $table->foreignId('type_id')->constrained('score_types')->onDelete('cascade');
             $table->timestamps();
         });
     }

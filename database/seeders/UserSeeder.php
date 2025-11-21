@@ -13,25 +13,33 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::count() < 3
+        $users = User::count() < 4
                     ? collect([
                         User::create([
-                            'name' => 'User Test 1',
-                            'email' => 'user1@example.com',
-                            'password' => bcrypt('password'),
+                            'name' => 'admin',
+                            'email' => 'admin@ehb.be',
+                            'password' => bcrypt('Password!321'),
                             'admin' => (boolean) 'true'
                         ]),
                         User::create([
-                            'name' => 'User Test 2',
-                            'email' => 'user2@example.com',
+                            'name' => 'User Demo 1',
+                            'email' => 'demo1@example.com',
                             'password' => bcrypt('password'),
+                            'admin' => (boolean) 'fase'
                         ]),
                         User::create([
-                            'name' => 'User Test 3',
-                            'email' => 'user3@example.com',
+                            'name' => 'User Demo 2',
+                            'email' => 'demo2@example.com',
                             'password' => bcrypt('password'),
+                            'admin' => (boolean) 'fase'
+                        ]),
+                        User::create([
+                            'name' => 'User Demo 3',
+                            'email' => 'demo3@example.com',
+                            'password' => bcrypt('password'),
+                            'admin' => (boolean) 'fase'
                         ]),
                     ])
-                    : User::take(3)->get();
+                    : User::take(4)->get();
     }
 }

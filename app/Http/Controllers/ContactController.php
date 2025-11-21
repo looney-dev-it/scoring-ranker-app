@@ -49,7 +49,6 @@ class ContactController extends Controller
                 Log::error('Fail to send email contact-request : '. $e->getMessage());
             }
 
-        // return response()->json(['success' => true, 'message' => 'Thanks your message has been submitted successfully, our admins will respond asap']);
         return redirect()->route('contact')->with('success','Thanks your message has been submitted successfully, our admins will respond asap');
     }
     

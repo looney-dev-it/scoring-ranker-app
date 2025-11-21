@@ -23,9 +23,10 @@ class ThreadTable extends Component
                 $query->latest()->limit(1);
             }, 'user'])
             ->orderByDesc('created_at')
-            ->paginate(10); // nombre de threads par page
+            ->paginate(10); // number of threads per page
 
-        // Ajouter latest_post à chaque thread
+        
+        // add latest post to thread within threads collection
         $threads->getCollection()->transform(function ($thread) {
             $thread->latest_post = $thread->posts->sortByDesc('created_at')->first();
             return $thread;

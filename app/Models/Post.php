@@ -18,6 +18,7 @@ class Post extends Model
         return $this->belongsTo(Thread::class, 'thread_id');
      }
 
+     /* Many 2 Many relationship through post_user_like table */
      public function likedByUsers()
      {
          return $this->belongsToMany(User::class, 'post_user_like')

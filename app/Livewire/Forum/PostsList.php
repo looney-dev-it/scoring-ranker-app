@@ -12,6 +12,7 @@ class PostsList extends Component
 
     public function toggleLike($postId)
     {
+        abort_unless(auth()->check(), 403);
         $user = auth()->user();
         $post = \App\Models\Post::findOrFail($postId);
 
@@ -26,6 +27,7 @@ class PostsList extends Component
             'message' => 'Like updated!'
         ]);
     }
+    
     public function render()
     {
         

@@ -5,6 +5,7 @@ use App\Models\User;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class NewsSeeder extends Seeder
 {
@@ -13,36 +14,39 @@ class NewsSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::get();
+        $users = User::all();
 
-        // Sample news
-        $news = json_decode('[
-            {
-                "title": "New app!!",
-                "content": "Freshly deployed new app with Laravel!"
-            },
-            {
-                "title": "Working hard!!",
-                "content": "Working on the Laravel framework website very hard!"
-            },
-            {
-                "title": "Sad weather",
-                "content": "Weather is quite sad today, a good day to code ! :smile_cat:"
-            },
-            {
-                "title": "News seeding",
-                "content": "Almost done with the seeding part of the News :+1:"
-            }
-        ]');
+        $newsData = [
+            [
+                'title' => 'New app!!',
+                'content' => 'Freshly deployed new app with Laravel!',
+            ],
+            [
+                'title' => 'Working hard!!',
+                'content' => "Working on the Laravel framework website very hard!\n\nNoOne",
+            ],
+            [
+                'title' => 'Sad weather',
+                'content' => "Weather is quite sad today, a good day to code ! :smile_cat:\n\nDominique",
+            ],
+            [
+                'title' => 'News seeding',
+                'content' => 'Almost done with the seeding part of the News :+1:',
+            ],
+        ];
 
-        // Crée les news associées à des utilisateurs aléatoires
-        foreach ($news as $n) {
+        // Upload news image to public folder ...
+        $imagePaths = collect(glob(database_path('seeders/images/news/*')))
+            ->map(fn($image) => Storage::disk('public')->putFile('news_images', new \Illuminate\Http\File($image)));
+
+        foreach ($newsData as $index => $data) {
             $users->random()->news()->create([
-                'title' => $n->title,
-                'content' => $n->content,
-                'is_published' => true,
-                'published_at' => now()->subMinutes(rand(5, 1440)),
-                'created_at' => now()->subMinutes(rand(5, 1440)),
+                'title'         => $data['title'],
+                'content'       => $data['content'],
+                'is_published'  => true,
+                'image_path'    => $imagePaths[$index % $imagePaths->count()] ?? null,
+                'published_at'  => now()->subMinutes(rand(5, 1440)),
+                'created_at'    => now()->subMinutes(rand(5, 1440)),
             ]);
         }
     }

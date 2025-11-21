@@ -21,11 +21,7 @@ class NewsForm extends Component
 
     public function mount()
     {
-        $user = auth()->user();
-
-        if (!$user || !$user->is_admin) {
-            abort(403);
-        }
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
     }
 
     public function closeAddModel()
@@ -48,14 +44,8 @@ class NewsForm extends Component
 
     public function submit()
     {
-        if (!auth()->check()) {
-            $this->dispatch('show-toast', [
-                'type' => 'danger',
-                'message' => 'You must be identified & admin to perform this!'
-            ]);
-            return; 
-        }
-
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
+        
         $validatedData = $this->validate([
                 'title' => 'required|min:5',
                 'content' => 'required|min:10',

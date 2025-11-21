@@ -9,6 +9,12 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
+
+
+/*
+    Email Controller template to send replys to ContactRequest -> used when admin process the Pending contact requests via admin panel
+*/
+
 class ContactReplyMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -32,7 +38,7 @@ class ContactReplyMail extends Mailable
     {
         return new Envelope(
             subject: 'Contact Request Reply Mail',
-            from: new Address('no-reply-scoring-ranker@gmail.com', 'Scoring Contact Answer'),
+            from: new Address(config('noreplycustom.from_email'), 'Scoring Contact Answer'),
         );
 
     }

@@ -28,13 +28,7 @@ class QuestionForm extends Component
 
     public function submit() 
     {
-        if (!auth()->check()) {
-            $this->dispatch('show-toast', [
-                'type' => 'danger',
-                'message' => 'You must be identified & admin to perform this!'
-            ]);
-            return; 
-        }
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
 
         $validatedData = $this->validate([
                 'question' => 'required|min:10',

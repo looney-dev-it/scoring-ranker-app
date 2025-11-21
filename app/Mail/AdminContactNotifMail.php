@@ -10,6 +10,10 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
 
+
+/*
+    Email Controller template to send Admin notifications -> used in case of Contact Request via route('contact')
+*/
 class AdminContactNotifMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -29,7 +33,7 @@ class AdminContactNotifMail extends Mailable
     {
         return new Envelope(
             subject: 'Admin Contact Notif Mail',
-            from: new Address('dcallaert@gmail.com', 'Scoring Admins'),
+            from: new Address(config('custom.from_email'), 'Scoring Admins'),
         );
     }
 

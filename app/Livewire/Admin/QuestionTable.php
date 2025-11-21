@@ -22,12 +22,14 @@ class QuestionTable extends Component
 
     public function edit($id) 
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         $this->dispatch('questionTopic', $id);
         $this->dispatch('openQuestionModal');
     }
 
     public function delete($id)
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         Question::findOrFail($id)->delete();
 
         $this->refreshTable();

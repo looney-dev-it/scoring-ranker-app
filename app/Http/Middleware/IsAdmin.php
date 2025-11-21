@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
+/*
+    Create a middelware used in route to ensure is_admin=true property from $user 
+*/
 class IsAdmin
 {
     /**

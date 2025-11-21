@@ -42,6 +42,8 @@ class UserForm extends Component
 
     public function submit()
     {   
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
+        
         if(is_null($this->userId)) {
             // New User
             $validatedData = $this->validate([

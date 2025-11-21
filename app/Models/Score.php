@@ -14,6 +14,7 @@ class Score extends Model
         return $this->belongsTo(ScoreTopic::class, 'topic_id');
     }
 
+    /* Get latest scores limited by $limit order by created date -> for component latestScores*/
     public static function latestScores($limit = 5)
     {
         return self::with('user')

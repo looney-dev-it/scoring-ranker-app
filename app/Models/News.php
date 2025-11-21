@@ -22,6 +22,7 @@ class News extends Model
         'user_id',
     ]; 
 
+    // Get the $limit (def=3) latest news by query order by published date desc for component latestNews
     public static function latestNews($limit = 3)
     {
         return self::with('author')

@@ -24,6 +24,7 @@ class ScoreTypeTable extends Component
 
     public function delete($id)
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         ScoreType::findOrFail($id)->delete();
 
         $this->score_types = ScoreType::all();

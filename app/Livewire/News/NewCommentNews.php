@@ -11,13 +11,13 @@ class NewCommentNews extends Component
 
     public function mount()
     {
-        if (!auth()->check()) {
-            abort(403);
-        }
+        abort_unless(auth()->check(), 403);
     }
 
     public function submit()
     {
+        abort_unless(auth()->check(), 403);
+
         $this->news->comments()->create([
             'user_id' => auth()->id(),
             'news_id' => $this->news->id,
@@ -25,8 +25,7 @@ class NewCommentNews extends Component
         ]);
 
         $this->reset('content');
-
-        // Émet l’événement pour rafraîchir PostsList
+        // Refresh comment list
         $this->dispatch('commentAdded');
     }
 

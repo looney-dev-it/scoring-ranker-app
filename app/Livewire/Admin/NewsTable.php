@@ -17,12 +17,16 @@ class NewsTable extends Component
 
     public function edit($id) 
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
+
         $this->dispatch('editNews', $id);
         $this->dispatch('openNewsModal');
     }
 
     public function delete($id)
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
+        
         News::findOrFail($id)->delete();
 
         $this->all_news = News::all();

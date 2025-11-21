@@ -54,13 +54,13 @@ class ForumController extends Controller
 
     public function showThread($scoreTopicId, $threadId)
     {
-        // Récupérer le topic parent
+        // Get parent topic
         $scoreTopic = ScoreTopic::findOrFail($scoreTopicId);
 
-        // Charger le thread avec ses posts et l’auteur
+        // Get Threads with posts & user 
         $thread = Thread::with([
             'user',
-            'posts.user' // pour afficher l’auteur de chaque réponse
+            'posts.user'
         ])->findOrFail($threadId);
 
         return view('forum.thread', compact('scoreTopic', 'thread'));

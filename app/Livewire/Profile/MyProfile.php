@@ -38,6 +38,7 @@ class MyProfile extends Component
 
     public function save()
     {
+        abort_unless(auth()->check(), 403);
         $data = $this->validate([
             'bio' => 'string|max:1000',
             'birth_date' => 'date',

@@ -17,6 +17,7 @@ class Form extends Component
     public $user_id;
 
 
+    /* trigger record pre-load if edit */
     #[On('editScore')]
     public function loadScore($id)
     {
@@ -30,7 +31,7 @@ class Form extends Component
     {
         $this->reset();
         $this->scoretopics = ScoreTopic::pluck('title', 'id');
-        $this->dispatch('scoreSubmitted');
+        $this->dispatch('scoreAdded');
     }
 
     public function submit() 
@@ -70,7 +71,7 @@ class Form extends Component
         }
         $this->reset();
         $this->scoretopics = ScoreTopic::pluck('title', 'id');
-        $this->dispatch('scoreSubmitted');
+        // trigger modal closing & refrtesh score table
         $this->dispatch('scoreAdded');
     }
 

@@ -11,13 +11,12 @@ class NewCommentProfile extends Component
 
     public function mount()
     {
-        if (!auth()->check()) {
-            abort(403);
-        }
+        abort_unless(auth()->check(), 403);
     }
 
     public function submit()
     {
+        abort_unless(auth()->check(), 403);
         $this->profile->comments()->create([
             'user_id' => auth()->id(),
             'profile_id' => $this->profile->id,
@@ -26,7 +25,7 @@ class NewCommentProfile extends Component
 
         $this->reset('content');
 
-        // Émet l’événement pour rafraîchir PostsList
+        // Refresh comments list
         $this->dispatch('commentAdded');
     }
     public function render()

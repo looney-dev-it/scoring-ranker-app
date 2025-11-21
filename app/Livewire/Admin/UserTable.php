@@ -29,6 +29,8 @@ class UserTable extends Component
 
     public function delete($id)
     {
+        abort_unless(auth()->check() && auth()->user()->is_admin, 403);
+        
         User::findOrFail($id)->delete();
 
         $this->users = User::all();
