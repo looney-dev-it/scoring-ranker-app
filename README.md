@@ -1,4 +1,3 @@
-```markdown
 # 📊 Scoring Ranker App
 
 ## 📖 Project Description
@@ -10,7 +9,6 @@ In addition, the application includes a **built‑in Forum** that is automatical
 The system is **securely developed on the Laravel framework**, ensuring reliability, scalability, and modern best practices.
 
 This project was created as part of the **Backend Web Development course at EHB**.
-```
 
 ---
 
