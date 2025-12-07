@@ -28,7 +28,7 @@
                             latest post :
                             {{ $thread->posts->first()->created_at->diffForHumans() }}
                             by <a
-                                href="route('user.show', ['id' => $thread->posts->first()->user->id ])">{{ $thread->posts->first()->user->name }}</a>
+                                href="{{  route('user.show', ['id' => $thread->posts->first()->user->id ])  }}">{{ $thread->posts->first()->user->name }}</a>
                         </small>
                     </div>
                 @endif

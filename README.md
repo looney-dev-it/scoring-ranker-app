@@ -17,7 +17,7 @@ This project was created as part of the **Backend Web Development course at EHB*
 1. **Clone the repository**
 
     ```bash
-    git clone <repo_name>
+    git clone git@github.com:looney-dev-it/scoring-ranker-app.git
     cd scoring-ranker-app
     ```
 
@@ -45,7 +45,10 @@ This project was created as part of the **Backend Web Development course at EHB*
 6. **Run your development environment**
 
     ```bash
-    composer remote dev
+    composer run dev        # for localhost development
+    ```
+    ```bash
+    composer run devremote  # for binding on 0.0.0.0
     ```
 
 7. **For production environment**
