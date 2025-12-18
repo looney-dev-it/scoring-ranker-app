@@ -31,7 +31,7 @@ class Form extends Component
     {
         $this->reset();
         $this->scoretopics = ScoreTopic::pluck('title', 'id');
-        $this->dispatch('scoreAdded');
+        $this->dispatch('hide-modal', ['id' => 'newScoreModal']);
     }
 
     public function submit() 
@@ -69,10 +69,8 @@ class Form extends Component
                 'message' => 'Scope Added'
             ]);
         }
-        $this->reset();
-        $this->scoretopics = ScoreTopic::pluck('title', 'id');
-        // trigger modal closing & refrtesh score table
         $this->dispatch('scoreAdded');
+        $this->closeAddModal();
     }
 
     public function mount() 

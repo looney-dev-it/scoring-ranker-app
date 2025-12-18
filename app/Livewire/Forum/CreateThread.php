@@ -45,8 +45,8 @@ class CreateThread extends Component
                 'type' => 'success',
                 'message' => 'Thread created successfully'
             ]);
+        $this->dispatch('hide-modal', ['id' => 'createThreadModal']);
         $this->dispatch('threadAdded');
-        $this->dispatch('close-modal');
     }
 
     public function render()

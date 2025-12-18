@@ -41,14 +41,4 @@
             </div>
         </div>
     </div>
-    <script>
-        window.addEventListener('close-modal', () => {
-            var modalEl = document.getElementById('createThreadModal');
-            var modal = bootstrap.Modal.getInstance(modalEl);
-            if (!modal) {
-                modal = new bootstrap.Modal(modalEl);
-            }
-            modal.hide();
-        });
-    </script>
 </div>

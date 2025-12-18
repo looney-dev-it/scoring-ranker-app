@@ -66,12 +66,6 @@
         </div>
     @endauth
     <script>
-        /* close modal after successfull score added */
-        window.addEventListener('scoreAdded', () => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('newScoreModal'));
-            if (modal) modal.hide();
-        });
-
         window.addEventListener('openScoreModal', () => {
             const modal = new bootstrap.Modal(document.getElementById('newScoreModal'));
             modal.show();
