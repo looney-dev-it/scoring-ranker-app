@@ -16,7 +16,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="newScoreTypeModal">News</h5>
+                            <h5 class="modal-title" id="newScoreTypeModal">Score Type</h5>
                         </div>
                         <div class="modal-body">
                             <livewire:admin.score-type-form />
@@ -55,24 +55,4 @@
             <livewire:admin.score-topic-table />
         </div>
     </div>
-    <script>
-
-        window.addEventListener('scoreTypeSubmitted', () => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('newScoreTypeModal'));
-            if (modal) modal.hide();
-        });
-        window.addEventListener('openScoreTypeModal', () => {
-            const modal = new bootstrap.Modal(document.getElementById('newScoreTypeModal'));
-            modal.show();
-        });
-
-        window.addEventListener('scoreTopicSubmitted', () => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('newScoreTopicModal'));
-            if (modal) modal.hide();
-        });
-        window.addEventListener('openScoreTopicModal', () => {
-            const modal = new bootstrap.Modal(document.getElementById('newScoreTopicModal'));
-            modal.show();
-        });
-    </script>
 </x-admin.layout>

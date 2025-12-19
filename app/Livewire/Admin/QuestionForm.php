@@ -15,6 +15,12 @@ class QuestionForm extends Component
     public $category_id;
     public $answer;
 
+    public function closeAddModel()
+    {
+        $this->reset();
+        $this->categories = Category::pluck('name', 'id');
+        $this->dispatch('hide-modal', 'newQuestionModal');
+    }
 
     #[On('editQuestion')]
     public function loadQuestion($id)
@@ -24,6 +30,7 @@ class QuestionForm extends Component
         $this->question = $question->question;        
         $this->category_id = $question->category_id;
         $this->answer = $question->answer;
+        $this->dispatch('show-modal', 'newQuestionModal');
     }
 
     public function submit() 
@@ -56,8 +63,7 @@ class QuestionForm extends Component
                 'message' => 'Question Added'
             ]);
         }
-        $this->reset();
-        $this->categories = Category::pluck('name', 'id');
+        $this->closeAddModel();
         $this->dispatch('questionSubmitted');
     }
 

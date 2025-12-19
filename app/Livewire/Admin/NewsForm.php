@@ -28,6 +28,7 @@ class NewsForm extends Component
     {
         $this->reset();
         $this->dispatch('newsSubmitted');
+        $this->dispatch('hide-modal', 'newNewsModal');
     }
 
     #[On('editNews')]
@@ -37,7 +38,6 @@ class NewsForm extends Component
         $this->newsId = $news->id;
         $this->title = $news->title;
         $this->content = $news->content;
-        //$this->image_path = $news->image_path;
         $this->is_published = (bool) $news->is_published;
         $this->existingImagePath = $news->image_path; 
     }
@@ -74,16 +74,17 @@ class NewsForm extends Component
         if($this->newsId) {
             $this->dispatch('show-toast', [
                 'type' => 'success',
-                'message' => 'News Added'
+                'message' => 'News Updated'
             ]);
         } else {
             $this->dispatch('show-toast', [
                 'type' => 'success',
-                'message' => 'News Updated'
+                'message' => 'News Added'
             ]);
         }
         $this->reset();
         $this->dispatch('newsSubmitted');
+        $this->dispatch('hide-modal', 'newNewsModal');
     }
 
     public function render()

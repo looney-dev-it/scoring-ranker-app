@@ -19,12 +19,19 @@ class CategoryForm extends Component
         abort_unless(auth()->check() && auth()->user()->is_admin, 403);
     }
 
+    public function closeAddModel()
+    {
+        $this->reset();
+        $this->dispatch('hide-modal', 'newCategoryModal');
+    }
+
     #[On('editCategory')]
     public function loadCategory($id)
     {
         $category = Category::findOrFail($id);
         $this->categoryId = $category->id;
-        $this->name = $category->name;        
+        $this->name = $category->name; 
+        $this->dispatch('show-modal', 'newCategoryModal');
     }
 
     public function submit() 
@@ -53,7 +60,7 @@ class CategoryForm extends Component
                 'message' => 'Category Added'
             ]);
         }
-        $this->reset();
+        $this->closeAddModel();
         $this->dispatch('categorySubmitted');
     }
 

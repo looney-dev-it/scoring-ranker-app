@@ -104,13 +104,17 @@
             }
 
             window.addEventListener('hide-modal', event => {
-                const { id } = event.detail[0];
+                const id = event.detail;
                 hideModal(id);
             });
 
+            window.addEventListener('show-modal', event => {
+                const id = event.detail;
+                showModal(id);
+            })
+
             function hideModal(modalId) {
                 var modalEl = document.getElementById(modalId);
-
                 if (modalEl) {
                     var modal = bootstrap.Modal.getInstance(modalEl);
 

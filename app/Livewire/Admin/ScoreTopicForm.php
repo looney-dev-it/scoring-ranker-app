@@ -15,6 +15,12 @@ class ScoreTopicForm extends Component
     public $type_id;
     public $unit;
 
+    public function closeAddModel()
+    {
+        $this->reset();
+        $this->scoretypes = ScoreType::pluck('name', 'id');
+        $this->dispatch('hide-modal', 'newScoreTopicModal');
+    }
 
     #[On('editScoreTopic')]
     public function loadScoreTopic($id)
@@ -24,6 +30,7 @@ class ScoreTopicForm extends Component
         $this->title = $scoretopic->title;        
         $this->type_id = $scoretopic->type_id;
         $this->unit = $scoretopic->unit;
+        $this->dispatch('show-modal', 'newScoreTopicModal');
     }
 
     public function submit() 
@@ -59,6 +66,7 @@ class ScoreTopicForm extends Component
         $this->reset();
         $this->scoretypes = ScoreType::pluck('name', 'id');
         $this->dispatch('scoreTopicSubmitted');
+        $this->dispatch('hide-modal', 'newScoreTopicModal');
     }
 
     public function mount() 

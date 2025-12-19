@@ -65,10 +65,4 @@
             <h2>Please sign in or register to be able to post scores</h2>
         </div>
     @endauth
-    <script>
-        window.addEventListener('openScoreModal', () => {
-            const modal = new bootstrap.Modal(document.getElementById('newScoreModal'));
-            modal.show();
-        });
-    </script>
 </x-layout>

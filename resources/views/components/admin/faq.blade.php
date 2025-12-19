@@ -55,24 +55,4 @@
             <livewire:admin.question-table />
         </div>
     </div>
-    <script>
-
-        window.addEventListener('questionSubmitted', () => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('newQuestionModal'));
-            if (modal) modal.hide();
-        });
-        window.addEventListener('openQuestionModal', () => {
-            const modal = new bootstrap.Modal(document.getElementById('newQuestionModal'));
-            modal.show();
-        });
-
-        window.addEventListener('categorySubmitted', () => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('newCategoryModal'));
-            if (modal) modal.hide();
-        });
-        window.addEventListener('openCategoryModal', () => {
-            const modal = new bootstrap.Modal(document.getElementById('newCategoryModal'));
-            modal.show();
-        });
-    </script>
 </x-admin.layout>

@@ -21,12 +21,20 @@ class ScoreTypeForm extends Component
         }
     }
 
+    public function closeAddModel()
+    {
+        $this->reset();
+        $this->dispatch('scoreTypeSubmitted');
+        $this->dispatch('hide-modal', 'newScoreTypeModal');
+    }
+
     #[On('editScoreType')]
     public function loadScoreType($id)
     {
         $scoretype = ScoreType::findOrFail($id);
         $this->typeId = $scoretype->id;
-        $this->name = $scoretype->name;        
+        $this->name = $scoretype->name;     
+        $this->dispatch('show-modal', 'newScoreTypeModal');   
     }
 
     public function submit() 
@@ -57,6 +65,7 @@ class ScoreTypeForm extends Component
         }
         $this->reset();
         $this->dispatch('scoreTypeSubmitted');
+        $this->dispatch('hide-modal', 'newScoreTypeModal');
     }
 
     public function render()

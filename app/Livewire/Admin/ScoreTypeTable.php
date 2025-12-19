@@ -19,7 +19,6 @@ class ScoreTypeTable extends Component
     public function edit($id) 
     {
         $this->dispatch('editScoreType', $id);
-        $this->dispatch('openScoreTypeModal');
     }
 
     public function delete($id)
@@ -33,6 +32,8 @@ class ScoreTypeTable extends Component
             'type' => 'success',
             'message' => 'ScoreType deleted'
         ]);
+        // Force refresh of ScoreTopics if ScoreType is deleted
+        $this->dispatch('scoreTopicSubmitted');
     }
 
     public function render()

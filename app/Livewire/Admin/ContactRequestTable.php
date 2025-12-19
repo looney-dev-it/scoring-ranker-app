@@ -21,7 +21,7 @@ class ContactRequestTable extends Component
     {
         $this->selectedId = $id;
         $this->selectedContact = ContactRequest::find($id);
-        $this->dispatch('show-modal');
+        $this->dispatch('show-modal', 'contactModal');
     }
 
     public function markAsTreated() {
@@ -30,7 +30,11 @@ class ContactRequestTable extends Component
         $cr->treated = !$cr->treated;
         $cr->save();
         $this->refreshTable();
-        $this->dispatch('close-modal');
+        $this->dispatch('hide-modal', 'contactModal');
+        $this->dispatch('show-toast', [
+                    'type' => 'success',
+                    'message' => 'Treated successfully!'
+                ]);
     }
     public function toggleTreated()
     {
@@ -63,7 +67,7 @@ class ContactRequestTable extends Component
                 ]);
             $this->replyMessage = '';
             $this->refreshTable();
-            $this->dispatch('close-modal');
+            $this->dispatch('hide-modal', 'contactModal');
         }
     }
 

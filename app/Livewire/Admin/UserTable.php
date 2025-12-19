@@ -8,7 +8,7 @@ use Livewire\Component;
 class UserTable extends Component
 {
     public $users;
-    protected $listeners = ['scoreTypeSubmitted' => 'refreshTable'];
+    protected $listeners = ['userSubmitted' => 'refreshTable'];
 
     public function refreshTable()
     {
@@ -18,13 +18,11 @@ class UserTable extends Component
     public function change_password($id)
     {
         $this->dispatch('changePasswordUser', $id);
-        $this->dispatch('openUserModal');
     }
 
     public function edit($id) 
     {
         $this->dispatch('editUser', $id);
-        $this->dispatch('openUserModal');
     }
 
     public function delete($id)

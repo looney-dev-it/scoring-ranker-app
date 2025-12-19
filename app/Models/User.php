@@ -64,13 +64,14 @@ class User extends Authenticatable
 
     public function news(): HasMany
     {
-        return $this->hasMany(News::class, 'user_id');;
+        return $this->hasMany(News::class, 'user_id');
     }
 
     public function profile()
     {
         return $this->hasOne(Profile::class, 'user_id');
     }
+
 
     /* Laravel Accessor concept : get{AttributeName}Attribute -> $user->is_admin */
     public function getIsAdminAttribute(): bool
@@ -82,6 +83,32 @@ class User extends Authenticatable
     public function likedPosts()
     {
         return $this->belongsToMany(Post::class, 'post_user_like')
-                    ->withTimestamps();
+                    ->withTimestamps()
+                    ->withPivots('user_id');
+    }
+
+    public function scores()
+    {
+        return $this->hasMany(Score::class, 'user_id');
+    }
+
+    public function threads()
+    {
+        return $this->hasMany(Thread::class, 'user_id');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function newscomments()
+    {
+        return $this->hasMany(CommentNews::class, 'user_id');
+    }
+
+    public function profilecomments()
+    {
+        return $this->hasMany(CommentProfile::class, 'user_id');
     }
 }

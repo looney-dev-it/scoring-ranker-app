@@ -24,14 +24,4 @@
             <livewire:admin.user-table :changePasswordOnly="false"/>
         </div>
     </div>
-    <script>
-        window.addEventListener('userSubmitted', () => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('newUserModal'));
-            if (modal) modal.hide();
-        });
-        window.addEventListener('openUserModal', () => {
-            const modal = new bootstrap.Modal(document.getElementById('newUserModal'));
-            modal.show();
-        });
-    </script>
 </x-admin.layout>

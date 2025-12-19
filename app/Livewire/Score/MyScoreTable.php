@@ -23,7 +23,6 @@ class MyScoreTable extends Component
         abort_unless(auth()->check(), 403);
         
         $this->dispatch('editScore', $id);
-        $this->dispatch('openScoreModal');
     }
 
     public function delete($id)

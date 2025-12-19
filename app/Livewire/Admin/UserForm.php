@@ -20,7 +20,7 @@ class UserForm extends Component
     public function closeAddModel()
     {
         $this->reset();
-        $this->dispatch('userSubmitted');
+        $this->dispatch('hide-modal', 'newUserModal');
     }
 
     #[On('editUser')]
@@ -31,6 +31,7 @@ class UserForm extends Component
         $this->name = $user->name;
         $this->email = $user->email;
         $this->admin = (bool) $user->admin;
+        $this->dispatch('show-modal', 'newUserModal');
     }
 
     #[On('changePasswordUser')]
@@ -38,6 +39,7 @@ class UserForm extends Component
     {
         $this->userId = $id;
         $this->changePasswordOnly = true;
+        $this->dispatch('show-modal', 'newUserModal');
     }
 
     public function submit()
@@ -79,7 +81,7 @@ class UserForm extends Component
             // Edit User
             $validatedData = $this->validate([
                 'name' => 'required|min:3',
-                'email' => 'required|email|unique:users,email',
+                'email' => 'required|email|unique:users,email,'.$this->userId,
                 'admin' => 'required',
             ]);
             $user = User::findOrFail($this->userId);
@@ -97,6 +99,7 @@ class UserForm extends Component
         $this->changePasswordOnly = false;
         $this->reset();
         $this->dispatch('userSubmitted');
+        $this->dispatch('hide-modal', 'newUserModal');
     }
 
     public function mount()

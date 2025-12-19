@@ -38,7 +38,7 @@ class ContactReplyMail extends Mailable
     {
         return new Envelope(
             subject: 'Contact Request Reply Mail',
-            from: new Address(config('noreplycustom.from_email'), 'Scoring Contact Answer'),
+            from: new Address(config('custom.from_email'), 'Scoring Contact Answer'),
         );
 
     }

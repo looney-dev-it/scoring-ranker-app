@@ -20,7 +20,7 @@ class NewsTable extends Component
         abort_unless(auth()->check() && auth()->user()->is_admin, 403);
 
         $this->dispatch('editNews', $id);
-        $this->dispatch('openNewsModal');
+        $this->dispatch('show-modal', 'newNewsModal');
     }
 
     public function delete($id)

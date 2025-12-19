@@ -25,13 +25,14 @@ class Form extends Component
         $this->scoreId = $score->id;
         $this->score = $score->score;        
         $this->topic_id = $score->topic_id;
+        $this->dispatch('show-modal', 'newScoreModal');
     }
 
     public function closeAddModal()
     {
         $this->reset();
         $this->scoretopics = ScoreTopic::pluck('title', 'id');
-        $this->dispatch('hide-modal', ['id' => 'newScoreModal']);
+        $this->dispatch('hide-modal', 'newScoreModal');
     }
 
     public function submit() 

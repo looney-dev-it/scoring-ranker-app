@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'admin_email' => 'dcallaert@gmail.com',
+    'admin_email' => 'no-reply-scoring-ranker@gmail.com',
     'from_email' => 'no-reply-scoring-ranker@gmail.com',
 ];

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
             $table->boolean('pinned')->default(false);
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('scoretopic_id')->constrained('score_topics');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('scoretopic_id')->constrained('score_topics')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -19,7 +19,6 @@ class ScoreTopicTable extends Component
     public function edit($id) 
     {
         $this->dispatch('editScoreTopic', $id);
-        $this->dispatch('openScoreTopicModal');
     }
 
     public function delete($id)

@@ -19,7 +19,6 @@ class CategoryTable extends Component
     {
         abort_unless(auth()->check() && auth()->user()->is_admin, 403);
         $this->dispatch('editCategory', $id);
-        $this->dispatch('openCategoryModal');
     }
 
     public function delete($id)
@@ -33,6 +32,9 @@ class CategoryTable extends Component
             'type' => 'success',
             'message' => 'Category deleted'
         ]);
+
+        // Force refresh of quetions if category is deleted
+        $this->dispatch('questionSubmitted');
     }
 
     public function render()

@@ -27,14 +27,4 @@
             <livewire:admin.news-table />
         </div>
     </div>
-    <script>
-        window.addEventListener('newsSubmitted', () => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('newNewsModal'));
-            if (modal) modal.hide();
-        });
-        window.addEventListener('openNewsModal', () => {
-            const modal = new bootstrap.Modal(document.getElementById('newNewsModal'));
-            modal.show();
-        });
-    </script>
 </x-admin.layout>
