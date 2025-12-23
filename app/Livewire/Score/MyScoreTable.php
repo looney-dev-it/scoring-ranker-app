@@ -31,7 +31,7 @@ class MyScoreTable extends Component
         
         Score::findOrFail($id)->delete();
 
-        $this->refreshTable();
+        $this->dispatch('scoreAdded');
 
         $this->dispatch('show-toast', [
             'type' => 'success',
