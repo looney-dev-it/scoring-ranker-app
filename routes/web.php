@@ -32,6 +32,7 @@ Route::prefix('forum')->group(function() {
     Route::get('/', [ForumController::class, 'index'])->name('forum');
     Route::get('/topic/{id}', [ForumController::class, 'showScoreTopic'])->name('forum.topic');
     Route::get('/topic/{topicid}/thread/{threadid}', [ForumController::class, 'showThread'])->name('forum.thread');
+    Route::delete('/topic/{topicid}/thread/{threadid}', [ForumController::class, 'deleteThread'])->name('forum.thread.destroy');
 });
 
 // Contact form

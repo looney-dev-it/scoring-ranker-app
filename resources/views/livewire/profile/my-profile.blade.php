@@ -79,4 +79,18 @@
             </div>
         </div>
     @endif
+
+    @if($profile->id != null)
+        <div class="row justify-content-center">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8">
+                <livewire:profile.comments-list-profile :profile="$profile" />
+                @auth
+                    <livewire:profile.new-comment-profile :profile="$profile" />
+                @else
+                    <p><small>Please login to post a comment</small></p>
+                @endauth
+            </div>
+        </div>
+    @endif
 </div>

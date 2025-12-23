@@ -65,4 +65,14 @@ class ForumController extends Controller
 
         return view('forum.thread', compact('scoreTopic', 'thread'));
     }
+
+    public function deleteThread($scoreTopicId, $threadId)
+    {
+        $thread = Thread::find($threadId);
+        $thread->delete();
+
+        return redirect()
+            ->route('forum.topic', $thread->scoretopic_id)
+            ->with('success', 'Thread deleted successfully.');
+    }
 }

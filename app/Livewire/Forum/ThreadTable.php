@@ -4,6 +4,7 @@ namespace App\Livewire\Forum;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+
 class ThreadTable extends Component
 {
     use WithPagination;

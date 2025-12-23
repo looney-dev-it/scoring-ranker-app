@@ -21,8 +21,8 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <div class="mb-3">
+                        
+                         <div class="mb-3">
                             <label for="content" class="form-label">Message</label>
                             <textarea id="content" rows="5" class="form-control @error('content') is-invalid @enderror"
                                 wire:model.defer="content" placeholder="Write your first message"></textarea>
@@ -30,6 +30,13 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        @if(auth()->user()->admin)
+                            <div class="form-check mb-1">
+                                <label for="pinned" class="form-label">Pinned</label>
+                                <input type="checkbox" class="form-check-input" id="pinned" wire:model.defer="pinned"/>
+                            </div>
+                        @endif
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

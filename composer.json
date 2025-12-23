@@ -53,8 +53,7 @@
             "@php -r \"is_dir('storage/app/public/storage/news_images') || mkdir('storage/app/public/storage/news_images', 0777, true);\"",
             "@php -r \"is_dir('storage/app/public/storage/profiles') || mkdir('storage/app/public/storage/profiles', 0777, true);\"",
             "@php artisan storage:link",
-            "npm install",
-            "npm run build"
+            "npm install"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
@@ -62,16 +61,7 @@
         ],
         "devremote": [
             "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve --host 0.0.0.0\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev --host 0.0.0.0\" --names=server,queue,logs,vite --kill-others"
-        ],
-        "dev:ssr": [
-            "npm run build:ssr",
-            "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"php artisan inertia:start-ssr\" --names=server,queue,logs,ssr --kill-others"
-        ],
-        "test": [
-            "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve --host 0.0.0.0\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --host 0.0.0.0 --names=server,queue,logs,vite --kill-others"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

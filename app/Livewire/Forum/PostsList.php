@@ -3,12 +3,22 @@
 namespace App\Livewire\Forum;
 
 use Livewire\Component;
+use Livewire\WithPagination;
+use App\Models\Thread;
+
 
 class PostsList extends Component
 {
-    public $thread;
+    public $threadId;
+    use WithPagination;
 
     protected $listeners = ['postAdded' => '$refresh'];
+    protected $paginationTheme = 'bootstrap';
+
+    public function mount(Thread $thread) 
+    {
+        $this->threadId = $thread->id;
+    }
 
     public function toggleLike($postId)
     {
@@ -28,11 +38,26 @@ class PostsList extends Component
         ]);
     }
     
+    public function deletePost($postId)
+    {
+        $post = \App\Models\Post::findOrFail($postId);
+
+        $post->delete();
+        $this->dispatch('show-toast', [
+            'type' => 'success',
+            'message' => 'Post deleted successfully!'
+        ]);
+        $this->render();
+    }
+
     public function render()
     {
-        
+        $posts = Thread::find($this->threadId)
+                    ->posts()
+                    ->orderByDesc('created_at')
+                    ->paginate(10);
         return view('livewire.forum.posts-list', [
-                'posts' => $this->thread->posts()->latest()->get(),
+                'posts' => $posts,
             ]);
     }
 }

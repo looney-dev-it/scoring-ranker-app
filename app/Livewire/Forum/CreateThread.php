@@ -10,6 +10,7 @@ class CreateThread extends Component
     public $scoreTopic;
     public $title;
     public $content;
+    public $pinned = false;
 
     protected $rules = [
         'title' => 'required|string|min:3|max:255',
@@ -37,6 +38,7 @@ class CreateThread extends Component
             'thread_id' => $thread->id,
             'user_id' => auth()->id(),
             'content' => $this->content,
+            'pinned' => $this->pinned,
         ]);
 
         $this->reset(['title', 'content']);

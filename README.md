@@ -53,9 +53,9 @@ This project was created as part of the **Backend Web Development course at EHB*
 
 7. **For production environment**
     ### Please refer to laravel documentation : https://laravel.com/docs/12.x/deployment
+    #### Please note that you could remove & exclude from production the full NPM package as it is used for development purpose only.
     ```bash
     composer setup --optimize-autoloader --no-dev
-    npm run build
     php artisan config:cache
     php artisan route:cache
     php artisan view:cache
@@ -73,8 +73,8 @@ This project was created as part of the **Backend Web Development course at EHB*
 <?php
 
 return [
-    'admin_email' => 'no-reply-scoring-ranker@gmail.com',
-    'from_email'  => 'no-reply-scoring-ranker@gmail.com',
+    'admin_email' => 'dcallaert@gmail.com',                 // Destination address where contact request will be sent to
+    'from_email'  => 'no-reply-scoring-ranker@gmail.com',   // From address when sending an email from the webapplication
 ];
 ```
 

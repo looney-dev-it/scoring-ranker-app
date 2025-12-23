@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class Register extends Controller
 {
@@ -19,7 +20,21 @@ class Register extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => [
+                'required',
+                'confirmed',
+                Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),
+            ],
+        ], [
+            'password.letters' => 'Your password must be : 8 char min, mixedCase, and at least one number & one symbol!',
+            'password.mixed' => 'Your password must be : 8 char min, mixedCase, and at least one number & one symbol!',
+            'password.numbers' => 'Your password must be : 8 char min, mixedCase, and at least one number & one symbol!',
+            'password.symbols' => 'Your password must be : 8 char min, mixedCase, and at least one number & one symbol!',
+            'password.uncompromised' => 'Your password is compromised! Please choose another one.',
         ]);
         
         // Create the user

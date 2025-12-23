@@ -14,7 +14,7 @@ class NewsSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::all();
+        $user = User::where('email', 'admin.ehb.be')->first();
 
         $newsData = [
             [
@@ -40,7 +40,7 @@ class NewsSeeder extends Seeder
             ->map(fn($image) => Storage::disk('public')->putFile('news_images', new \Illuminate\Http\File($image)));
 
         foreach ($newsData as $index => $data) {
-            $users->random()->news()->create([
+            $user->news()->create([
                 'title'         => $data['title'],
                 'content'       => $data['content'],
                 'is_published'  => true,

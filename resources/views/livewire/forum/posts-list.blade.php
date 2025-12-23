@@ -1,5 +1,5 @@
 <div>
-    @foreach($thread->posts as $post)
+    @foreach($posts as $post)
         <div class="card mb-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
@@ -9,6 +9,14 @@
                         </a>
                     </strong>
                     <span class="text-muted">– {{ $post->created_at->diffForHumans() }}</span>
+                    @if(auth()->user()->admin)
+                        <button 
+                            type="button"
+                            class="btn-close"
+                            aria-label="Delete"
+                            wire:click="deletePost({{ $post->id }})"
+                        ></button>
+                    @endif
                 </div>
                 <div>
                     <!-- Bouton Like -->
@@ -24,4 +32,7 @@
             </div>
         </div>
     @endforeach
+    <div class="mt-3">
+        {{ $posts->links() }}
+    </div>
 </div>
