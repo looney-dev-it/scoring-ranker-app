@@ -14,7 +14,7 @@ class NewsSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::where('email', 'admin.ehb.be')->first();
+        $user = User::where('email', 'admin@ehb.be')->first();
 
         $newsData = [
             [
