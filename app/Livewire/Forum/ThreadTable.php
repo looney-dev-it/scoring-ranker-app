@@ -9,6 +9,7 @@ class ThreadTable extends Component
 {
     use WithPagination;
     public $scoreTopic;
+    protected $paginationTheme = 'bootstrap';
 
     protected $listeners = ['threadAdded' => 'refreshTable'];
 
@@ -24,7 +25,7 @@ class ThreadTable extends Component
                 $query->latest()->limit(1);
             }, 'user'])
             ->orderByDesc('pinned')
-            ->orderByDesc('created_at')
+            ->orderByDesc('latest_post_at')
             ->paginate(10); // number of threads per page
 
         

@@ -30,13 +30,14 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        @if(auth()->user()->admin)
-                            <div class="form-check mb-1">
-                                <label for="pinned" class="form-label">Pinned</label>
-                                <input type="checkbox" class="form-check-input" id="pinned" wire:model.defer="pinned"/>
-                            </div>
-                        @endif
+                        @auth
+                            @if(auth()->user()->admin)
+                                <div class="form-check mb-1">
+                                    <label for="pinned" class="form-label">Pinned</label>
+                                    <input type="checkbox" class="form-check-input" id="pinned" wire:model.defer="pinned"/>
+                                </div>
+                            @endif
+                        @endauth
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

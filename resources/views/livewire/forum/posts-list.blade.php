@@ -9,14 +9,16 @@
                         </a>
                     </strong>
                     <span class="text-muted">– {{ $post->created_at->diffForHumans() }}</span>
-                    @if(auth()->user()->admin)
-                        <button 
-                            type="button"
-                            class="btn-close"
-                            aria-label="Delete"
-                            wire:click="deletePost({{ $post->id }})"
-                        ></button>
-                    @endif
+                    @auth
+                        @if(auth()->user()->admin)
+                            <button 
+                                type="button"
+                                class="btn-close"
+                                aria-label="Delete"
+                                wire:click="deletePost({{ $post->id }})"
+                            ></button>
+                        @endif
+                    @endauth
                 </div>
                 <div>
                     <!-- Bouton Like -->
