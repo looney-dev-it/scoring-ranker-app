@@ -107,3 +107,4 @@ MAIL_FROM_NAME=${APP_NAME}
 -   [Laravel](https://laravel.com/)
 -   [Composer](https://getcomposer.org/)
 -   [Livewire](https://livewire.laravel.com/)
+-   [Bootstrap](https://getbootstrap.com/)

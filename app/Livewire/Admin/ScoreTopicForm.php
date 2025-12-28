@@ -15,6 +15,13 @@ class ScoreTopicForm extends Component
     public $type_id;
     public $unit;
 
+    protected $listeners = ['scoreTypeSubmitted' => 'refreshScoreTypes'];
+
+    public function refreshScoreTypes()
+    {
+        $this->scoretypes = ScoreType::pluck('name', 'id');
+    }
+    
     public function closeAddModel()
     {
         $this->reset();

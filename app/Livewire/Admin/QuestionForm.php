@@ -15,6 +15,14 @@ class QuestionForm extends Component
     public $category_id;
     public $answer;
 
+    protected $listeners = ['categorySubmitted' => 'refreshCategories'];
+
+
+    public function refreshCategories()
+    {
+        $this->categories = Category::pluck('name', 'id');
+    }   
+    
     public function closeAddModel()
     {
         $this->reset();
@@ -79,6 +87,7 @@ class QuestionForm extends Component
     
     public function render()
     {
+        $this->categories = Category::pluck('name', 'id');
         return view('livewire.admin.question-form');
     }
 }

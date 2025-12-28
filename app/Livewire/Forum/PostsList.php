@@ -12,12 +12,21 @@ class PostsList extends Component
     public $threadId;
     use WithPagination;
 
-    protected $listeners = ['postAdded' => '$refresh'];
+    protected $listeners = ['postAdded' => 'goToLatestPage'];
     protected $paginationTheme = 'bootstrap';
 
     public function mount(Thread $thread) 
     {
         $this->threadId = $thread->id;
+    }
+
+
+    public function goToLatestPage()
+    {
+        $totalPosts = Thread::find($this->threadId)->posts()->count();
+        $postsPerPage = 10;
+        $lastPage = ceil($totalPosts / $postsPerPage);
+        $this->setPage($lastPage);
     }
 
     public function toggleLike($postId)
@@ -54,7 +63,7 @@ class PostsList extends Component
     {
         $posts = Thread::find($this->threadId)
                     ->posts()
-                    ->orderByDesc('created_at')
+                    ->orderBy('created_at')
                     ->paginate(10);
         return view('livewire.forum.posts-list', [
                 'posts' => $posts,

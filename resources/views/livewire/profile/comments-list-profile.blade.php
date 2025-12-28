@@ -15,16 +15,6 @@
                     @endif
                 @endauth
             </div>
-            @auth
-                @if(auth()->user()->admin)
-                    <button 
-                        class="btn btn-sm btn-danger"
-                        wire:click="deleteComment({{ $comment->id }})"
-                    >
-                        Delete
-                    </button>
-                @endif
-            @endauth
             <div class="card-body">
                 {!! nl2br(e($comment->content)) !!}
             </div>

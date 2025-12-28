@@ -9,7 +9,8 @@ class ScoreTopicTable extends Component
 {
 
     public $score_topics;
-    protected $listeners = ['scoreTopicSubmitted' => 'refreshTable'];
+    protected $listeners = ['scoreTopicSubmitted' => 'refreshTable',
+                            'scoreTypeSubmitted' => 'refreshTable'];
 
     public function refreshTable()
     {
