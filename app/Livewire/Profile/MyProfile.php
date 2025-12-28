@@ -13,6 +13,7 @@ class MyProfile extends Component
 
     public $profileId;
     public $user;
+    public $name;
     public $profile;
     public $bio;
     public $birth_date;
@@ -24,6 +25,7 @@ class MyProfile extends Component
     {
         
         $this->user = auth()->user();
+        $this->name = $this->user->name;
         $this->profile = $this->user->profile ?? new \App\Models\Profile();
         $this->bio = $this->profile->bio;
         $this->birth_date = optional($this->profile->birth_date)->format('Y-m-d');
@@ -40,6 +42,7 @@ class MyProfile extends Component
     {
         abort_unless(auth()->check(), 403);
         $data = $this->validate([
+            'name' => 'required|string|max:255',
             'bio' => 'string|max:1000',
             'birth_date' => 'date',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -50,6 +53,8 @@ class MyProfile extends Component
         } else {
             $path = $this->existingPhoto ?? null;
         }
+        
+        $this->user->update(['name' => $this->name]);
 
         Profile::updateOrCreate(
             ['id' => $this->profileId],
@@ -65,7 +70,7 @@ class MyProfile extends Component
                 'type' => 'success',
                 'message' => 'Profile updated!'
             ]);
-        $this->mount();
+        $this->render();
     }
 
     public function render()

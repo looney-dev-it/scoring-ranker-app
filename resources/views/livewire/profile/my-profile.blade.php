@@ -13,6 +13,10 @@
 
             <div class="container">
                 <div class="row mb-2">
+                    <div class="col-sm-3 fw-bold">Name :</div>
+                    <div class="col-sm-9">{{  $user->name }}</div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-sm-3 fw-bold">Email :</div>
                     <div class="col-sm-9">{{  $user->email }}</div>
                 </div>
@@ -45,6 +49,13 @@
                             <button type="button" class="btn-close" wire:click="$set('showModal', false)"></button>
                         </div>
                         <div class="modal-body">
+                            <div class="mb-3">
+                                <label>Name</label>
+                                <input type="text" wire:model.defer="name" class="form-control">
+                                <div>
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror 
+                                </div>
+                            </div>
                             <div class="mb-3">
                                 <label>Bio</label>
                                 <textarea wire:model.defer="bio" class="form-control"></textarea>
