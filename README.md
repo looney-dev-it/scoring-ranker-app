@@ -32,6 +32,19 @@ This project was created as part of the **Backend Web Development course at EHB*
 
 4. **Install dependencies**
 
+    #### Prerequesites (packages) to run dev environment :
+    - php-xml
+    - php-dom
+    - php-sqlite3 
+    - nodejs ^20.19.0
+
+    #### Note : If your version of PHP and others are not up to date, you might need to run composer update before composer setup
+
+    ```bash
+    composer update
+    composer setup
+    ```
+    And then 
     ```bash
     composer setup
     ```
