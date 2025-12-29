@@ -17,7 +17,7 @@ This project was created as part of the **Backend Web Development course at EHB*
 1. **Clone the repository**
 
     ```bash
-    git clone git@github.com:looney-dev-it/scoring-ranker-app.git
+    git clone https://github.com/looney-dev-it/scoring-ranker-app.git
     cd scoring-ranker-app
     ```
 
